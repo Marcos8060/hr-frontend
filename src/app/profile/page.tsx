@@ -1,6 +1,7 @@
 "use client";
 import { authContext } from "@/assets/context/use-context";
 import Image from "next/image";
+import Link from "next/link";
 import React, { useContext } from "react";
 import { BsCardImage } from "react-icons/bs";
 import { FaUserEdit } from "react-icons/fa";
@@ -11,7 +12,7 @@ const Profile = () => {
   return (
     <div className="w-10/12 mx-auto">
       <section className="flex items-center justify-between mb-4">
-        <div className="flex items-center gap-2">
+        <Link href="/dashboard" className="flex items-center gap-2">
           <div>
             <IoIosArrowRoundBack />
           </div>
@@ -25,7 +26,7 @@ const Profile = () => {
           <div>
             <p className="text-xl font-bold ">{user?.username}</p>
           </div>
-        </div>
+        </Link>
         <div className="flex items-center gap-2 bg-white shadow-2xl rounded px-3 py-2 cursor-pointer">
           <FaUserEdit className="" />
           <p className="text-xs font-bold">Edit Profile</p>

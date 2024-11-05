@@ -50,9 +50,11 @@ const CustomizedHeader = () => {
           }}
         >
           <MenuItem>
-            <Link href="/dashboard/profile">Profile</Link>
+            <Link href="/profile">Profile</Link>
           </MenuItem>
-          <MenuItem onClick={logoutUser}>Logout</MenuItem>
+          <MenuItem onClick={logoutUser}>
+            <p>Logout</p>
+          </MenuItem>
         </Menu>
       </div>
     </section>
