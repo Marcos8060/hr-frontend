@@ -10,7 +10,6 @@ import Link from "next/link";
 const CustomizedHeader = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const { logoutUser, user } = useContext(authContext);
-  const token = useAuth();
 
   const open = Boolean(anchorEl);
 
@@ -25,7 +24,7 @@ const CustomizedHeader = () => {
   return (
     <section className="h-[13vh] py-6 px-4 flex items-center justify-between">
       <div>
-        <h1 className="font-bold text-2xl">Good morning Maria</h1>
+        <h1 className="font-bold text-2xl">Good morning {user?.username}</h1>
         <p className="text-sm">long time no see</p>
       </div>
       <div>

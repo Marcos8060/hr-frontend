@@ -10,6 +10,11 @@ export const menu = [
     icon: <BiSolidDashboard />,
   },
   {
+    label: "Admin Panel",
+    path: "/dashboard/admin",
+    icon: <BiSolidDashboard />,
+  },
+  {
     label: "Trips",
     icon: <FaCar />,
     children: [
