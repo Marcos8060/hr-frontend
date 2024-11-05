@@ -8,10 +8,17 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-      },
+      colors:{
+        primary: '#292D30',
+        white: '#FFFFFF',
+        background: '#F2F2F2',
+        black: '#000000',
+        gradientFrom: '#1F3D8E',
+        gradientTo: '#3D76E4',
+        gray: '#E5E7EB',
+        warning: '#FF3333',
+        link: '#0055CC',
+      }
     },
   },
   plugins: [],
