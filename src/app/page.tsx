@@ -32,7 +32,7 @@ export default function Home() {
   return (
     <section className="bg-background h-screen">
       <div className="flex items-center justify-center h-screen md:w-9/12 w-11/12 mx-auto">
-        <div className="md:block w-1/2 shadow text-white bg-primary rounded-tl-xl rounded-bl-xl h-[70vh]">
+        <div className="md:block hidden w-1/2 shadow text-white bg-primary rounded-tl-xl rounded-bl-xl h-[70vh]">
           <h1 className="text-2xl font-bold flex items-center justify-center h-[70vh]">
             HR Management System
           </h1>

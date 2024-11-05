@@ -3,7 +3,7 @@ export const API_URL = {
 
 
     /***************** AUTHENTICATION APIS **********************/
-    LOGIN: 'https://visitrack.thinksynergyltd.com/api1/rest/login.php',
+    LOGIN: 'http://localhost:3000/api/login',
     
 
     /***************** TRIPS APIS **********************/
