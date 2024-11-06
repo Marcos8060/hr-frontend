@@ -6,15 +6,10 @@ export const API_URL = {
     LOGIN: 'http://localhost:3000/api/login',
     
 
-    /***************** TRIPS APIS **********************/
-    FETCH_TRIPS: 'https://visitrack.thinksynergyltd.com/api1/rest/get_trips.php',
-    ADD_TRIP: 'https://visitrack.thinksynergyltd.com/api1/rest/create_trip.php',
-    SEARCH_VEHICLE: 'https://visitrack.thinksynergyltd.com/api1/rest/getvehicle.php',
+    /***************** PROFILE APIS **********************/
+    FETCH_PROFILE_DETAILS: 'http://localhost:3000/api/get-profile',
+    
 
-
-    /***************** VISITORS APIS **********************/
-    FETCH_VISITS: 'https://visitrack.thinksynergyltd.com/api1/rest/get_visitors.php',
-    ADD_APPOINTMENT: 'https://visitrack.thinksynergyltd.com/api1/rest/create_visit.php'
    
 
 }
@@ -26,15 +21,10 @@ export const APP_API_URL = {
     /***************** AUTH **********************/
     LOGIN: '/api/login',
 
-    /***************** TRIPS **********************/
-    FETCH_TRIPS: '/api/trips',
-    ADD_TRIP: '/api/trips/add-trip',
-    SEARCH_VEHICLE: '/api/trips/vehicle',
+    /***************** PROFILE **********************/
+    FETCH_PROFILE_DETAILS: '/api/profile/get-profile',
 
 
-    /***************** VISITORS **********************/
-    FETCH_VISITS: '/api/visitors',
-    ADD_APPOINTMENT: '/api/visitors/add-appointment',
    
 }
 

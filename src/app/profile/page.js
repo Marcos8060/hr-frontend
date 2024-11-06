@@ -2,13 +2,26 @@
 import { authContext } from "@/assets/context/use-context";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { BsCardImage } from "react-icons/bs";
 import { FaUserEdit } from "react-icons/fa";
 import { IoIosArrowRoundBack } from "react-icons/io";
+import { fetchProfileData } from "../redux/features/profile";
+import { useAuth } from "@/assets/hooks/use-auth";
+import { useDispatch, useSelector } from "react-redux";
 
 const Profile = () => {
+  const { profileData } = useSelector((store) => store.profile);
   const { user } = useContext(authContext);
+  const dispatch = useDispatch();
+  const token = useAuth();
+
+  useEffect(() => {
+    if (token && user) {
+      dispatch(fetchProfileData(token));
+    }
+  }, [token]);
+
   return (
     <div className="w-10/12 mx-auto">
       <section className="flex items-center justify-between mb-4">
@@ -49,20 +62,44 @@ const Profile = () => {
           </div>
         </div>
         <div className="w-4/12">
-          <p className="text-xs uppercase">Role</p>
-          <p className="bg-white shadow-2xl rounded-lg px-4 py-2 text-xs mt-4">Employee</p>
+          <p className="text-xs uppercase">Bio</p>
           <div className="bg-white shadow-2xl rounded-lg px-4 py-2 text-sm mt-4 flex flex-col">
-            <span className="text-xs font-thin">hr</span>
-            <span className="text-sm font-bold">Roselyda Ayoo</span>
+            <span className="text-xs font-thin">role</span>
+            <span className="text-sm font-bold">
+              {profileData?.role}
+            </span>
           </div>
           <div className="bg-white shadow-2xl rounded-lg px-4 py-2 text-sm mt-4 flex flex-col">
-            <span className="text-xs font-thin">lead</span>
-            <span className="text-sm font-bold">Jared Oyugi</span>
+            <span className="text-xs font-thin">department</span>
+            <span className="text-sm font-bold">
+              {profileData?.profile?.department}
+            </span>
+          </div>
+          <div className="bg-white shadow-2xl rounded-lg px-4 py-2 text-sm mt-4 flex flex-col">
+            <span className="text-xs font-thin">supervisor</span>
+            <span className="text-sm font-bold">
+              {profileData?.profile?.supervisor}
+            </span>
           </div>
         </div>
         <div className="w-4/12">
-          <p className="text-xs uppercase">Onboarding</p>
-          <p className="bg-white shadow-2xl rounded-lg px-4 py-2 text-xs mt-4">Active</p>
+          <p className="text-xs uppercase">Employement details</p>
+          <div className="bg-white shadow-2xl rounded-lg px-4 py-2 text-sm mt-4 flex flex-col">
+            <span className="text-xs font-thin">bank details</span>
+            <span className="text-sm font-bold">
+              {profileData?.profile?.bankAccount}
+            </span>
+          </div>
+          <div className="bg-white shadow-2xl rounded-lg px-4 py-2 text-sm mt-4 flex flex-col">
+            <span className="text-xs font-thin">email</span>
+            <span className="text-sm font-bold">{profileData?.email}</span>
+          </div>
+          <div className="bg-white shadow-2xl rounded-lg px-4 py-2 text-sm mt-4 flex flex-col">
+            <span className="text-xs font-thin">employment status</span>
+            <span className="text-sm font-bold">
+              {profileData?.profile?.employmentStatus}
+            </span>
+          </div>
         </div>
       </section>
       <hr className="text-gray my-4" />
@@ -72,31 +109,43 @@ const Profile = () => {
           <div className="w-4/12">
             <div className="bg-white shadow-2xl rounded-lg px-4 py-2 text-sm mt-4 flex flex-col">
               <span className="text-xs font-thin">firstname</span>
-              <span className="text-sm font-bold">Jared Oyugi</span>
+              <span className="text-sm font-bold">
+                {profileData?.profile?.firstName}
+              </span>
             </div>
             <div className="bg-white shadow-2xl rounded-lg px-4 py-2 text-sm mt-4 flex flex-col">
               <span className="text-xs font-thin">lastname</span>
-              <span className="text-sm font-bold">Jared Oyugi</span>
+              <span className="text-sm font-bold">
+                {profileData?.profile?.lastName}
+              </span>
             </div>
           </div>
           <div className="w-4/12">
             <div className="bg-white shadow-2xl rounded-lg px-4 py-2 text-sm mt-4 flex flex-col">
-              <span className="text-xs font-thin">firstname</span>
-              <span className="text-sm font-bold">Jared Oyugi</span>
+              <span className="text-xs font-thin">phonenumber</span>
+              <span className="text-sm font-bold">
+                {profileData?.profile?.phoneNumber}
+              </span>
             </div>
             <div className="bg-white shadow-2xl rounded-lg px-4 py-2 text-sm mt-4 flex flex-col">
-              <span className="text-xs font-thin">lastname</span>
-              <span className="text-sm font-bold">Jared Oyugi</span>
+              <span className="text-xs font-thin">gender</span>
+              <span className="text-sm font-bold">
+                {profileData?.profile?.gender}
+              </span>
             </div>
           </div>
           <div className="w-4/12">
             <div className="bg-white shadow-2xl rounded-lg px-4 py-2 text-sm mt-4 flex flex-col">
-              <span className="text-xs font-thin">firstname</span>
-              <span className="text-sm font-bold">Jared Oyugi</span>
+              <span className="text-xs font-thin">job title</span>
+              <span className="text-sm font-bold">
+                {profileData?.profile?.jobTitle}
+              </span>
             </div>
             <div className="bg-white shadow-2xl rounded-lg px-4 py-2 text-sm mt-4 flex flex-col">
-              <span className="text-xs font-thin">lastname</span>
-              <span className="text-sm font-bold">Jared Oyugi</span>
+              <span className="text-xs font-thin">employment type</span>
+              <span className="text-sm font-bold">
+                {profileData?.profile?.employmentType}
+              </span>
             </div>
           </div>
         </section>
