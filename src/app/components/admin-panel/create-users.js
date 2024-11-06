@@ -58,7 +58,7 @@ const CreateUsers = () => {
         onClick={handleClickPopOver}
         className="bg-primary px-4 py-2 rounded text-xs text-white flex items-center"
       >
-        Add User
+        Create User
       </button>
       <Popover
         id={id}
