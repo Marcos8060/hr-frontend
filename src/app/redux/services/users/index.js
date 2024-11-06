@@ -16,3 +16,17 @@ export const fetchUsers = async(auth) =>{
     }
 }
 
+export const createUser = async(payload,auth) =>{
+    const axiosInstance = UseAxios();
+    try {
+        const response = await axiosInstance.post(`${APP_API_URL.CREATE_USERS}`,payload,{
+            headers:{
+                Authorization: auth ? `Bearer ${auth}` : undefined,
+            }
+        })
+        return response.data;
+    } catch (error) {
+        return error.message
+    }
+}
+
