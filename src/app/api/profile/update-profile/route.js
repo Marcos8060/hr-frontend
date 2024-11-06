@@ -28,9 +28,7 @@ export async function POST(req) {
   }
 }
 
-export async function GET(req) {
-  const token = req.headers.get("authorization");
-    console.log("Authorization Header:", token);
+export async function PUT(req) {
   try {
     const config = {
       headers: {
@@ -38,8 +36,9 @@ export async function GET(req) {
       },
     };
 
+    const payload = await req.json();
   
-    const response = await backendAxiosInstance.get(`${API_URL.FETCH_PROFILE_DETAILS}`,config);
+    const response = await backendAxiosInstance.put(`${API_URL.UPDATE_PROFILE_DETAILS}`, payload, config);
 
     return new Response(JSON.stringify(response.data), {
       status: 200,
