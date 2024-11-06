@@ -30,3 +30,19 @@ export const createUser = async(payload,auth) =>{
     }
 }
 
+export const deleteUser = async(id,auth) =>{
+    const axiosInstance = UseAxios();
+    console.log("SERVICE_ID: ",id);
+    try {
+        const response = await axiosInstance.delete(`${APP_API_URL.DELETE_USER}`,{
+            headers:{
+                Authorization: auth ? `Bearer ${auth}` : undefined,
+            },
+            data: { userId: id }
+        })
+        return response.data;
+    } catch (error) {
+        return error.message
+    }
+}
+

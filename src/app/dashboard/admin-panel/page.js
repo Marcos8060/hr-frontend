@@ -20,11 +20,13 @@ const AdminPanel = () => {
   return (
     <>
       <DashboardCards {...{ users }} />
-      <div className="flex items-center justify-between my-2">
-        <h1 className="text-sm font-bold">Employees</h1>
+      <div className="flex items-center justify-end my-2">
         <CreateUsers />
       </div>
-      <UsersTable {...{ users }} />
+      <div className="bg-white shadow rounded-tr-lg rounded-tl-lg">
+        <h1 className="text-sm font-bold p-2">Employees</h1>
+        <UsersTable {...{ users }} />
+      </div>
     </>
   );
 };

@@ -1,7 +1,25 @@
 "use client";
 import React from "react";
+import { deleteUser } from "@/app/redux/services/users";
+import { useAuth } from "@/assets/hooks/use-auth";
+import { useDispatch } from "react-redux";
+import { fetchAllUsers } from "@/app/redux/features/users";
+import toast from "react-hot-toast";
 
 export default function UsersTable({ users }) {
+  const dispatch = useDispatch();
+  const token = useAuth();
+
+  const clearUser = async (id) => {
+    const response = await deleteUser(id, token);
+    if (response === "Request failed with status code 404") {
+      toast.error("User not found");
+    } else {
+      dispatch(fetchAllUsers(token));
+      toast.success(response.message);
+    }
+  };
+
   return (
     <div className="">
       <div className="overflow-x-auto">
@@ -46,7 +64,14 @@ export default function UsersTable({ users }) {
                     className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600"
                   />
                 </td> */}
-                <td className=" p-3">{user.username}</td>
+                <td className=" p-3 flex items-center gap-2">
+                  <img
+                    className="h-8 w-8 rounded-full object-cover"
+                    src="https://images.pexels.com/photos/4925896/pexels-photo-4925896.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                    alt=""
+                  />
+                  {user.username}
+                </td>
                 <td className=" p-3">{user.email}</td>
                 <td className=" p-3">{user.role}</td>
                 <td className=" p-3">{user.profile?.firstName}</td>
@@ -54,7 +79,12 @@ export default function UsersTable({ users }) {
                 <td className=" p-3">{user.profile?.phoneNumber}</td>
                 <td className=" p-3">{user.profile?.gender}</td>
                 <td className=" p-3">{user.profile?.department}</td>
-                <td className=" p-3 text-warning font-bold">Delete</td>
+                <td
+                  className=" p-3 text-warning font-bold cursor-pointer"
+                  onClick={() => clearUser(user.id)}
+                >
+                  Delete
+                </td>
                 {/* <td className=" p-2">{user.profile?.jobTitle}</td> */}
                 {/* <td className=" p-2">{user.profile?.employmentType}</td> */}
                 {/* <td className=" p-2">{user.profile?.employmentStatus}</td> */}
