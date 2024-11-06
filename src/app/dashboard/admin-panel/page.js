@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useAuth } from "@/assets/hooks/use-auth";
 import { fetchAllUsers } from "@/app/redux/features/users";
 import CreateUsers from "@/app/components/admin-panel/create-users";
+import DashboardCards from "@/app/components/dashboard-cards";
 
 const AdminPanel = () => {
   const dispatch = useDispatch();
@@ -18,8 +19,9 @@ const AdminPanel = () => {
   }, [token]);
   return (
     <>
-      <div className="flex items-center justify-between mb-2">
-        <h1 className="text-sm font-bold">Users</h1>
+      <DashboardCards {...{ users }} />
+      <div className="flex items-center justify-between my-2">
+        <h1 className="text-sm font-bold">Employees</h1>
         <CreateUsers />
       </div>
       <UsersTable {...{ users }} />

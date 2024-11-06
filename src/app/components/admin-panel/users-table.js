@@ -53,8 +53,8 @@ export default function UsersTable({ users }) {
                 <td className=" p-3">{user.profile?.lastName}</td>
                 <td className=" p-3">{user.profile?.phoneNumber}</td>
                 <td className=" p-3">{user.profile?.gender}</td>
-                <td className=" p-2">{user.profile?.department}</td>
-                <td className=" p-2 text-warning font-bold">Delete</td>
+                <td className=" p-3">{user.profile?.department}</td>
+                <td className=" p-3 text-warning font-bold">Delete</td>
                 {/* <td className=" p-2">{user.profile?.jobTitle}</td> */}
                 {/* <td className=" p-2">{user.profile?.employmentType}</td> */}
                 {/* <td className=" p-2">{user.profile?.employmentStatus}</td> */}
