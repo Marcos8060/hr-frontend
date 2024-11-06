@@ -64,7 +64,7 @@ export default function UsersTable({ users }) {
                     className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600"
                   />
                 </td> */}
-                <td className=" p-3 flex items-center gap-2">
+                <td className=" p-2 flex items-center gap-2">
                   <img
                     className="h-8 w-8 rounded-full object-cover"
                     src="https://images.pexels.com/photos/4925896/pexels-photo-4925896.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
@@ -72,15 +72,15 @@ export default function UsersTable({ users }) {
                   />
                   {user.username}
                 </td>
-                <td className=" p-3">{user.email}</td>
-                <td className=" p-3">{user.role}</td>
-                <td className=" p-3">{user.profile?.firstName}</td>
-                <td className=" p-3">{user.profile?.lastName}</td>
-                <td className=" p-3">{user.profile?.phoneNumber}</td>
-                <td className=" p-3">{user.profile?.gender}</td>
-                <td className=" p-3">{user.profile?.department}</td>
+                <td className=" p-2">{user.email}</td>
+                <td className=" p-2">{user.role}</td>
+                <td className=" p-2">{user.profile?.firstName}</td>
+                <td className=" p-2">{user.profile?.lastName}</td>
+                <td className=" p-2">{user.profile?.phoneNumber}</td>
+                <td className=" p-2">{user.profile?.gender}</td>
+                <td className=" p-2">{user.profile?.department}</td>
                 <td
-                  className=" p-3 text-warning font-bold cursor-pointer"
+                  className=" p-2 text-warning font-bold cursor-pointer"
                   onClick={() => clearUser(user.id)}
                 >
                   Delete
