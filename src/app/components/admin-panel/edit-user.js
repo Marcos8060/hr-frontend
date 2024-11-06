@@ -3,14 +3,13 @@ import React, { useState, useContext } from "react";
 import { Formik, Field, Form } from "formik";
 import { toast } from "react-hot-toast";
 import Popover from "@mui/material/Popover";
-import { createUser } from "@/app/redux/services/users";
+import { editUser } from "@/app/redux/services/users";
 import { useDispatch } from "react-redux";
 import { fetchAllUsers } from "@/app/redux/features/users";
 import { useAuth } from "@/assets/hooks/use-auth";
 import { authContext } from "@/assets/context/use-context";
-import { HiUsers } from "react-icons/hi2";
 
-const CreateUsers = () => {
+const EditUser = ({ user }) => {
   const [loading, setLoading] = useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const { logoutUser } = useContext(authContext);
@@ -29,16 +28,15 @@ const CreateUsers = () => {
   const id = open ? "simple-popover" : undefined;
 
   const initialValues = {
-    username: "",
-    email: "",
-    password: "",
-    role: "",
+    username: user?.username || "",
+    email: user?.email || "",
+    password: user?.password || "",
+    role: user?.role || "",
   };
 
-  const handleCreateUser = async (formValue, helpers) => {
+  const handleEditUser = async (formValue, helpers) => {
     setLoading(true);
-    const response = await createUser(formValue, token);
-    console.log("response ", response);
+    const response = await editUser(formValue,user?.id,token);
     if (response === "Request failed with status code 403") {
       toast.error("You are not authorized to create user");
       handleClosePopOver();
@@ -46,22 +44,16 @@ const CreateUsers = () => {
       logoutUser();
     } else {
       helpers.resetForm();
-      toast.success("user created successfully");
-      dispatch(fetchAllUsers(token));
+      toast.success("edit successful");
       handleClosePopOver();
+      dispatch(fetchAllUsers(token));
       setLoading(false);
     }
   };
 
   return (
     <section>
-      <button
-        onClick={handleClickPopOver}
-        className="bg-primary px-4 py-2 rounded text-xs text-white flex items-center gap-2"
-      >
-        <HiUsers />
-        Create User
-      </button>
+      <p onClick={handleClickPopOver} className="text-xs font-bold text-green">Edit</p>
       <Popover
         id={id}
         open={open}
@@ -73,7 +65,7 @@ const CreateUsers = () => {
         }}
       >
         <div className="px-2 py-4">
-          <Formik initialValues={initialValues} onSubmit={handleCreateUser}>
+          <Formik initialValues={initialValues} onSubmit={handleEditUser}>
             <Form className="">
               <div className="w-full flex gap-2 items-center">
                 <Field
@@ -149,4 +141,4 @@ const CreateUsers = () => {
   );
 };
 
-export default CreateUsers;
+export default EditUser;

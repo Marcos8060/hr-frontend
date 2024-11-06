@@ -15,6 +15,8 @@ export const API_URL = {
     /***************** USERS APIS **********************/
     FETCH_USERS: 'http://localhost:3000/api/users',
     CREATE_USERS: 'http://localhost:3000/api/register',
+    DELETE_USER: 'http://localhost:3000/api/delete-user',
+    EDIT_USER: 'http://localhost:3000/api/edit-user',
 
    
 
@@ -36,6 +38,8 @@ export const APP_API_URL = {
     /***************** USERS **********************/
     FETCH_USERS: '/api/users/fetch-users',
     CREATE_USERS: '/api/users/create-user',
+    DELETE_USER: '/api/users/delete-user',
+    EDIT_USER: '/api/users/edit-user',
    
 }
 

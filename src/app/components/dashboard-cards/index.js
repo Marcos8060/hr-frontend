@@ -5,9 +5,9 @@ const DashboardCards = ({ users }) => {
 
 
   // filter full time employees
-  const fullTimeEmployees = users.filter(( user) => user.profile?.employmentType === 'Full-time')
-  const contractEmployees = users.filter(( user) => user.profile?.employmentType === 'Contract')
-  const onLeaveEmployees = users.filter(( user) => user.profile?.employmentStatus === 'On Leave')
+  const fullTimeEmployees = Array.isArray(users) && users.filter(( user) => user.profile?.employmentType === 'Full-time')
+  const contractEmployees = Array.isArray(users) && users.filter(( user) => user.profile?.employmentType === 'Contract')
+  const onLeaveEmployees = Array.isArray(users) && users.filter(( user) => user.profile?.employmentStatus === 'On Leave')
     
   return (
     <section className="md:flex md:space-y-0 space-y-2 items-center gap-2 justify-between">

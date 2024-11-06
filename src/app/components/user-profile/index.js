@@ -17,8 +17,6 @@ export default function EditProfile({
   const dispatch = useDispatch();
   const auth = useAuth();
 
-  console.log(isEditMode)
-
   const initialValues = {
     firstName: profileData?.profile?.firstName || "",
     lastName: profileData?.profile?.lastName || "",

@@ -5,12 +5,10 @@ import { BsChevronDown } from "react-icons/bs";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Link from "next/link";
-import { useAuth } from '../../../assets/hooks/use-auth'
 
 const CustomizedHeader = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const { logoutUser, user } = useContext(authContext);
-  const auth = useAuth();
 
   const open = Boolean(anchorEl);
 
@@ -23,10 +21,9 @@ const CustomizedHeader = () => {
   };
 
   return (
-    <section className="h-[13vh] py-6 px-4 flex items-center justify-between">
+    <section className="h-[10vh] py-6 px-4 flex items-center justify-between">
       <div>
         <h1 className="font-bold text-2xl">Good morning {user?.username}</h1>
-        <p className="text-sm">long time no see</p>
       </div>
       <div>
         <div className="flex items-center gap-2">
