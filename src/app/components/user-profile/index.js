@@ -2,16 +2,22 @@
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { useState } from "react";
 import Link from "next/link";
-import { updateProfile } from "@/app/redux/services/profile";
+import { createProfile, updateProfile } from "@/app/redux/services/profile";
 import { useAuth } from "@/assets/hooks/use-auth";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { fetchProfileData } from "@/app/redux/features/profile";
 
-export default function EditProfile({ setShowEditComponent, profileData }) {
+export default function EditProfile({
+  setShowEditComponent,
+  profileData,
+  isEditMode,
+}) {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const auth = useAuth();
+
+  console.log(isEditMode)
 
   const initialValues = {
     firstName: profileData?.profile?.firstName || "",
@@ -29,12 +35,21 @@ export default function EditProfile({ setShowEditComponent, profileData }) {
   const handleUpdate = async (formValue, helpers) => {
     try {
       setLoading(true);
-      await updateProfile(formValue,auth);
-      helpers.resetForm();
-      setLoading(false);
-      toast.success("Profile updated successfully");
-      dispatch(fetchProfileData(auth));
-      setShowEditComponent(false);
+      if (isEditMode) {
+        await updateProfile(formValue, auth);
+        helpers.resetForm();
+        setLoading(false);
+        toast.success("Profile updated successfully");
+        dispatch(fetchProfileData(auth));
+        setShowEditComponent(false);
+      } else {
+        await createProfile(formValue, auth);
+        helpers.resetForm();
+        setLoading(false);
+        toast.success("Profile created successfully");
+        dispatch(fetchProfileData(auth));
+        setShowEditComponent(false);
+      }
     } catch (error) {
       setLoading(false);
       toast.error("Failed to update profile");
@@ -138,7 +153,7 @@ export default function EditProfile({ setShowEditComponent, profileData }) {
                   <option value="" disabled>
                     ---employment type---
                   </option>
-                  <option value="Full-Time">Full Time</option>
+                  <option value="Full-time">Full Time</option>
                   <option value="Part-time">Part Time</option>
                   <option value="Contract">Contract</option>
                 </Field>

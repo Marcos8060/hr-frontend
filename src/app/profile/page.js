@@ -17,12 +17,22 @@ const Profile = () => {
   const dispatch = useDispatch();
   const token = useAuth();
   const [showEditComponent, setShowEditComponent] = useState(false);
+  const [isEditMode, setIsEditMode] = useState(false);
+
 
   useEffect(() => {
     if (token && user) {
       dispatch(fetchProfileData(token));
     }
   }, [token]);
+
+  useEffect(() => {
+    if(profileData?.profile){
+      setIsEditMode(true);
+    }else{
+      setIsEditMode(false);
+    }
+  },[profileData])
 
   return (
     <div className="w-10/12 mx-auto">
@@ -42,17 +52,28 @@ const Profile = () => {
             <p className="text-xl font-bold ">{user?.username}</p>
           </div>
         </Link>
-        <div
+
+        {profileData?.profile === null ? (
+          <div
           onClick={() => setShowEditComponent(true)}
           className="flex items-center gap-2 bg-white shadow-2xl rounded px-3 py-2 cursor-pointer"
         >
           <FaUserEdit className="" />
-          <p className="text-xs font-bold">Edit Profile</p>
+          <p className="text-xs font-bold">Create Profile</p>
         </div>
+        ) : (
+          <div
+            onClick={() => setShowEditComponent(true)}
+            className="flex items-center gap-2 bg-white shadow-2xl rounded px-3 py-2 cursor-pointer"
+          >
+            <FaUserEdit className="" />
+            <p className="text-xs font-bold">Edit Profile</p>
+          </div>
+        )}
       </section>
       <hr className="text-gray mb-4" />
       {showEditComponent ? (
-        <EditProfile {...{ setShowEditComponent,profileData }} />
+        <EditProfile {...{ setShowEditComponent, profileData,isEditMode }} />
       ) : (
         <>
           <section className="flex justify-between gap-4">
