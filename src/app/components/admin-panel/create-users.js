@@ -1,14 +1,14 @@
 "use client";
-import React, { useState,useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Formik, Field, Form } from "formik";
 import { toast } from "react-hot-toast";
 import Popover from "@mui/material/Popover";
-import { MdAdd } from "react-icons/md";
 import { createUser } from "@/app/redux/services/users";
 import { useDispatch } from "react-redux";
 import { fetchAllUsers } from "@/app/redux/features/users";
 import { useAuth } from "@/assets/hooks/use-auth";
 import { authContext } from "@/assets/context/use-context";
+import { HiUsers } from "react-icons/hi2";
 
 const CreateUsers = () => {
   const [loading, setLoading] = useState(false);
@@ -32,12 +32,13 @@ const CreateUsers = () => {
     username: "",
     email: "",
     password: "",
+    role: "",
   };
 
   const handleCreateUser = async (formValue, helpers) => {
     setLoading(true);
-    const response = await createUser(formValue,token);
-    console.log("response ",response);
+    const response = await createUser(formValue, token);
+    console.log("response ", response);
     if (response === "Request failed with status code 403") {
       toast.error("You are not authorized to create user");
       handleClosePopOver();
@@ -56,8 +57,9 @@ const CreateUsers = () => {
     <section>
       <button
         onClick={handleClickPopOver}
-        className="bg-primary px-4 py-2 rounded text-xs text-white flex items-center"
+        className="bg-primary px-4 py-2 rounded text-xs text-white flex items-center gap-2"
       >
+        <HiUsers />
         Create User
       </button>
       <Popover
@@ -83,20 +85,34 @@ const CreateUsers = () => {
                 />
                 <Field
                   className="block border border-gray py-2 text-xs rounded px-4 focus:outline-none"
-                  type="text"
-                  placeholder="Password"
-                  name="password"
-                  required
-                />
-              </div>
-              <div className="mt-2 mb-2">
-                <Field
-                  className="block w-full border border-gray py-2 text-xs rounded px-4 focus:outline-none"
                   type="email"
                   placeholder="Email"
                   name="email"
                   required
                 />
+              </div>
+              <div className="mt-2 mb-2 flex items-center gap-2">
+                <Field
+                  className="block border border-gray py-2 text-xs rounded px-4 focus:outline-none"
+                  type="text"
+                  placeholder="Password"
+                  name="password"
+                  required
+                />
+                <Field
+                  as="select"
+                  className="block border rounded text-xs border-gray py-3 px-4 focus:outline-none w-full"
+                  type="text"
+                  name="role"
+                >
+                  <option value="" disabled>
+                    ---assign role---
+                  </option>
+                  <option value="Admin">Admin</option>
+                  <option value="Employee">Employee</option>
+                  <option value="Staff">Staff</option>
+                  <option value="Human Resource">Hr Manager</option>
+                </Field>
               </div>
               <div className="flex justify-end">
                 <button
