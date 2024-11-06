@@ -5,12 +5,10 @@ import { BsChevronDown } from "react-icons/bs";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Link from "next/link";
-import { useAuth } from '../../../assets/hooks/use-auth'
 
 const CustomizedHeader = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const { logoutUser, user } = useContext(authContext);
-  const auth = useAuth();
 
   const open = Boolean(anchorEl);
 
