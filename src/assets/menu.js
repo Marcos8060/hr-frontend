@@ -2,6 +2,7 @@ import { BiSolidDashboard } from "react-icons/bi";
 import { FaCar } from "react-icons/fa";
 import { FaPerson } from "react-icons/fa6";
 import { BiSolidReport } from "react-icons/bi";
+import { RiAdminFill } from "react-icons/ri";
 
 export const menu = [
   {
@@ -12,7 +13,7 @@ export const menu = [
   {
     label: "Admin Panel",
     path: "/dashboard/admin",
-    icon: <BiSolidDashboard />,
+    icon: <RiAdminFill />,
   },
   {
     label: "Trips",

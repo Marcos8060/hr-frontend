@@ -8,6 +8,8 @@ export const API_URL = {
 
     /***************** PROFILE APIS **********************/
     FETCH_PROFILE_DETAILS: 'http://localhost:3000/api/get-profile',
+    ADD_PROFILE_DETAILS: 'http://localhost:3000/api/create-profile',
+    UPDATE_PROFILE_DETAILS: 'http://localhost:3000/api/update-profile',
     
 
    
@@ -23,6 +25,8 @@ export const APP_API_URL = {
 
     /***************** PROFILE **********************/
     FETCH_PROFILE_DETAILS: '/api/profile/get-profile',
+    ADD_PROFILE_DETAILS: '/api/profile/create-profile',
+    UPDATE_PROFILE_DETAILS: '/api/profile/update-profile',
 
 
    

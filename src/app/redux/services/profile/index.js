@@ -16,3 +16,31 @@ export const fetchProfile = async(auth) =>{
         return error.message
     }
 }
+
+export const createProfile = async(payload,auth) =>{
+    const axiosInstance = UseAxios();
+    try {
+        const response = await axiosInstance.post(`${APP_API_URL.ADD_PROFILE_DETAILS}`,payload,{
+            headers:{
+                Authorization: auth ? `Bearer ${auth}` : undefined,
+            }
+        })
+        return response.data;
+    } catch (error) {
+        return error.message
+    }
+}
+
+export const updateProfile = async(payload,auth) =>{
+    const axiosInstance = UseAxios();
+    try {
+        const response = await axiosInstance.put(`${APP_API_URL.UPDATE_PROFILE_DETAILS}`,payload,{
+            headers:{
+                Authorization: auth ? `Bearer ${auth}` : undefined,
+            }
+        })
+        return response.data;
+    } catch (error) {
+        return error.message
+    }
+}
