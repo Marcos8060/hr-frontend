@@ -1,10 +1,12 @@
 "use client";
 
+import { useAuth } from "@/assets/hooks/use-auth";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
+
 
   return (
     <>

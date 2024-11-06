@@ -50,7 +50,10 @@ export const AuthProvider = ({ children }) => {
   // decode the token and set the user when a component mounts
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
-    const decodedUser = jwtDecode(storedToken);
+    let decodedUser;
+    if (storedToken) {
+      decodedUser = jwtDecode(storedToken);
+    }
     setUser(decodedUser);
   }, []);
 

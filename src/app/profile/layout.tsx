@@ -1,5 +1,4 @@
-import CustomizedHeader from "../components/layout/customized-header";
-import Sidebar from "../components/layout/layout";
+import Sidebar from "@/app/components/layout/layout";
 
 
 export default function Layout({ children }: { children: React.ReactNode }) {
@@ -9,7 +8,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <Sidebar />
       </section>
       <section className="w-full overflow-y-auto">
-        <CustomizedHeader />
         <div className="flex-grow py-6 px-2 md:px-6 md:py-6 ">
           {children}
         </div>

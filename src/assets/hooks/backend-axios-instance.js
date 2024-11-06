@@ -8,6 +8,5 @@ export const backendAxiosInstance = axios.create({
 });
 
 backendAxiosInstance.interceptors.request.use(async (request) => {
-    console.log("REQUEST ",request);
     return request;
 });

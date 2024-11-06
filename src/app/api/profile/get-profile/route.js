@@ -1,5 +1,5 @@
-import { API_URL } from '../../../assets/api-endpoints/index';
-import { backendAxiosInstance } from "../../../assets/hooks/backend-axios-instance";
+import { API_URL } from '../../../../assets/api-endpoints/index';
+import { backendAxiosInstance } from "../../../../assets/hooks/backend-axios-instance";
 
 // For handling POST requests in Next.js 13+ using the app folder structure
 export async function POST(req) {
@@ -9,6 +9,7 @@ export async function POST(req) {
     const payload = {
       ...body,
     };
+
 
     const config = {
       headers: {
@@ -28,6 +29,8 @@ export async function POST(req) {
 }
 
 export async function GET(req) {
+  const token = req.headers.get("authorization");
+    console.log("Authorization Header:", token);
   try {
     const config = {
       headers: {
@@ -35,7 +38,9 @@ export async function GET(req) {
       },
     };
 
-    const response = await backendAxiosInstance.get(`${API_URL.GET_COUNTIES}`, config);
+  
+    console.log("PROFILE_CONFIG ",config)
+    const response = await backendAxiosInstance.get(`${API_URL.FETCH_PROFILE_DETAILS}`,config);
 
     return new Response(JSON.stringify(response.data), {
       status: 200,
