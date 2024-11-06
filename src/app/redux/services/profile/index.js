@@ -12,7 +12,6 @@ export const fetchProfile = async(auth) =>{
         })
         return response.data;
     } catch (error) {
-        console.log("PROFILE_ERROR ",error)
         return error.message
     }
 }

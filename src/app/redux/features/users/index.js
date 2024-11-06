@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+import { fetchUsers } from '../../services/users'
 
 const initialState = {
   users: [],
@@ -20,6 +20,16 @@ export const {
   setUsers,
 } = UserSlice.actions;
 
+
+export const fetchAllUsers = (auth) => async (dispatch) => {
+    
+  try {
+    const data = await fetchUsers(auth);
+    dispatch(setUsers(data));
+  } catch (error) {
+    dispatch(setError(error.message));
+  }
+};
 
 
 

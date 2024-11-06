@@ -12,7 +12,7 @@ export const menu = [
   },
   {
     label: "Admin Panel",
-    path: "/dashboard/admin",
+    path: "/dashboard/admin-panel",
     icon: <RiAdminFill />,
   },
   {

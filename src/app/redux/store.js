@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import userReducer from './features/users'
+import userReducer from './features/users/index'
 import profileReducer from './features/profile'
 
 
