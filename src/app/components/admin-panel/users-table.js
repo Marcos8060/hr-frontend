@@ -1,10 +1,5 @@
 "use client";
 import React from "react";
-import { deleteUser } from "@/app/redux/services/users";
-import { useAuth } from "@/assets/hooks/use-auth";
-import { useDispatch } from "react-redux";
-import { fetchAllUsers } from "@/app/redux/features/users";
-import toast from "react-hot-toast";
 import DeleteEditUser from '../../components/admin-panel/delete-edit-user'
 
 export default function UsersTable({ users }) {
@@ -51,10 +46,8 @@ export default function UsersTable({ users }) {
                 <td className=" p-2">{user.profile?.department}</td>
                 <td
                   className=" p-2 font-bold cursor-pointer"
-                  // onClick={() => clearUser(user.id)}
                 >
                   <DeleteEditUser {...{ user }} />
-                  {/* <BsThreeDots className="text-sm cursor-pointer" /> */}
                 </td>
               </tr>
             ))}

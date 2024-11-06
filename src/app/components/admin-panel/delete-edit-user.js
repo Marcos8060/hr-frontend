@@ -8,6 +8,7 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import { BsThreeDots } from "react-icons/bs";
 import { useDispatch } from "react-redux";
+import EditUser from './edit-user'
 
 const DeleteEditUser = ({ user }) => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -22,7 +23,6 @@ const DeleteEditUser = ({ user }) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  
 
   const clearUser = async () => {
     const response = await deleteUser(user?.id, token);
@@ -55,10 +55,15 @@ const DeleteEditUser = ({ user }) => {
         }}
       >
         <MenuItem>
-          <p className="text-xs">Edit</p>
+          <EditUser {...{ user }} />
         </MenuItem>
         <MenuItem>
-          <p onClick={()=> clearUser()} className="text-xs">Delete</p>
+          <p
+            onClick={() => clearUser()}
+            className="text-xs text-warning font-bold"
+          >
+            Delete
+          </p>
         </MenuItem>
       </Menu>
     </div>
