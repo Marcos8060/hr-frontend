@@ -14,7 +14,7 @@ const DashboardCards = ({ users }) => {
       <div className="bg-white rounded text-sm w-full px-6 py-4 space-y-4 shadow">
         <div className="flex items-center gap-2 font-bold">
           <HiUsers />
-          <p className="text-xs">Total Employees</p>
+          <p className="text-sm">Total Employees</p>
         </div>
         <div className="flex items-center justify-between">
           <p className="font-bold text-xl">{users?.length}</p>
@@ -24,7 +24,7 @@ const DashboardCards = ({ users }) => {
       <div className="bg-white rounded text-sm w-full px-6 py-4 space-y-4 shadow">
         <div className="flex items-center gap-2 font-bold">
           <HiUsers />
-          <p className="text-xs">Full Time Employees</p>
+          <p className="text-sm">Full Time Employees</p>
         </div>
         <div className="flex items-center justify-between">
           <p className="font-bold text-xl">{fullTimeEmployees?.length}</p>
@@ -34,7 +34,7 @@ const DashboardCards = ({ users }) => {
       <div className="bg-white rounded text-sm w-full px-6 py-4 space-y-4 shadow">
         <div className="flex items-center gap-2 font-bold">
           <HiUsers />
-          <p className="text-xs">Employees On Contract</p>
+          <p className="text-sm">Employees On Contract</p>
         </div>
         <div className="flex items-center justify-between">
           <p className="font-bold text-xl">{contractEmployees?.length}</p>
@@ -44,7 +44,7 @@ const DashboardCards = ({ users }) => {
       <div className="bg-white rounded text-sm w-full px-6 py-4 space-y-4 shadow">
         <div className="flex items-center gap-2 font-bold">
           <HiUsers />
-          <p className="text-xs">Employees On Leave</p>
+          <p className="text-sm">Employees On Leave</p>
         </div>
         <div className="flex items-center justify-between">
           <p className="font-bold text-xl">{onLeaveEmployees?.length}</p>

@@ -22,7 +22,7 @@ const Leaves = () => {
   return (
     <>
       <AddLeave />
-      <LeaveDashboardCards />
+      <LeaveDashboardCards { ...{ leave }} />
       <div className="overflow-x-auto bg-white rounded my-4">
         <h1 className="p-2 text-sm font-bold">Leaves</h1>
         <table className="table-auto w-full border-collapse bg-white h-[20vh] shadow-xl rounded-bl rounded-br">

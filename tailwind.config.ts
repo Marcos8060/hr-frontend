@@ -18,7 +18,7 @@ const config: Config = {
         gray: '#E5E7EB',
         warning: '#E12D2C',
         link: '#0055CC',
-        green: '#54B206'
+        green: '#54B206',
       }
     },
   },
