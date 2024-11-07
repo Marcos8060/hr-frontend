@@ -1,74 +1,63 @@
 import * as React from "react";
-import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
-import DialogTitle from "@mui/material/DialogTitle";
 import Slide from "@mui/material/Slide";
-import { Formik, Field, Form, ErrorMessage } from "formik";
+import { Formik, Field, Form } from "formik";
+import { updateLeave } from "@/app/redux/services/employees";
+import toast from "react-hot-toast";
+import { fetchLeaveData } from "@/app/redux/features/employees";
+import { useAuth } from "@/assets/hooks/use-auth";
+import { useDispatch } from "react-redux";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function AddEditLeave() {
+export default function EditLeave({ leave,handleCloseMenu }) {
   const [open, setOpen] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
+  const dispatch = useDispatch();
+  const token = useAuth();
 
   const handleClickOpen = () => {
     setOpen(true);
   };
 
-  const handleClose = () => {
+  const handleCloseModal = () => {
     setOpen(false);
   };
 
   const initialValues = {
-    // firstName: profileData?.profile?.firstName || "",
-    // lastName: profileData?.profile?.lastName || "",
-    // phoneNumber: profileData?.profile?.phoneNumber || "",
-    // gender: profileData?.profile?.gender || "",
-    // department: profileData?.profile?.department || "",
-    // jobTitle: profileData?.profile?.jobTitle || "",
-    // employmentType: profileData?.profile?.employmentType || "",
-    // employmentStatus: profileData?.profile?.employmentStatus || "",
-    // supervisor: profileData?.profile?.supervisor || "",
-    // bankAccount: profileData?.profile?.bankAccount || "",
+    leaveType: leave?.leaveType || "",
+    fromDate: leave?.fromDate || "",
+    toDate: leave?.toDate || "",
+    days: leave?.days || "",
+    reason: leave?.reason || "",
   };
 
-  const handleAddLeave = async (formValue, helpers) => {
+  const handleUpdateLeave = async (formValue, helpers) => {
     try {
       setLoading(true);
-      if (isEditMode) {
-        await updateProfile(formValue, auth);
-        helpers.resetForm();
-        setLoading(false);
-        toast.success("Profile updated successfully");
-        dispatch(fetchProfileData(auth));
-        setShowEditComponent(false);
-      } else {
-        await createProfile(formValue, auth);
-        helpers.resetForm();
-        setLoading(false);
-        toast.success("Profile created successfully");
-        dispatch(fetchProfileData(auth));
-        setShowEditComponent(false);
-      }
+      await updateLeave(formValue,leave?.id,token);
+      helpers.resetForm();
+      setLoading(false);
+      toast.success("Leave updated successfully");
+      dispatch(fetchLeaveData(token));
+      handleCloseModal();
+      handleCloseMenu();
     } catch (error) {
       setLoading(false);
-      toast.error("Failed to update profile");
+      handleCloseMenu();
+      toast.error("Failed to update leave");
     }
   };
 
   return (
     <>
       <div className="flex justify-end">
-        <button
-          className="bg-primary px-4 py-2 mb-1 rounded text-background shadow-xl text-xs"
-          onClick={handleClickOpen}
-        >
-          Add Leave
-        </button>
+        <p className="text-xs text-green" onClick={handleClickOpen}>
+          Edit Leave
+        </p>
       </div>
       <Dialog
         open={open}
@@ -76,11 +65,15 @@ export default function AddEditLeave() {
         keepMounted
         maxWidth="xs"
         fullWidth
-        onClose={handleClose}
+        onClose={handleCloseModal}
         aria-describedby="alert-dialog-slide-description"
       >
         <DialogContent>
-          <Formik initialValues={initialValues} onSubmit={handleAddLeave}>
+          <Formik
+            initialValues={initialValues}
+            onSubmit={handleUpdateLeave}
+            enableReinitialize
+          >
             <Form className="space-y-4 w-full">
               <div>
                 <label className="text-xs" htmlFor="">
@@ -91,15 +84,16 @@ export default function AddEditLeave() {
                   as="select"
                   className="block border rounded text-xs border-gray py-3 px-4 focus:outline-none w-full"
                   type="text"
-                  placeholder="employmentType"
-                  name="employmentType"
+                  placeholder="leave type"
+                  name="leaveType"
                 >
                   <option value="" disabled>
                     ---leave type---
                   </option>
-                  <option value="Full-time">Full Time</option>
-                  <option value="Part-time">Part Time</option>
-                  <option value="Contract">Contract</option>
+                  <option value="Annual Leave">Annual Leave</option>
+                  <option value="Medical Leave">Medical Leave</option>
+                  <option value="Maternity Leave">Maternity Leave</option>
+                  <option value="Academic Leave">Academic Leave</option>
                 </Field>
               </div>
               <div>
@@ -133,7 +127,7 @@ export default function AddEditLeave() {
                   className="block border rounded text-xs border-gray py-3 px-4 focus:outline-none w-full"
                   type="text"
                   placeholder="No of days"
-                  name="jobTitle"
+                  name="days"
                 />
               </div>
               <div>

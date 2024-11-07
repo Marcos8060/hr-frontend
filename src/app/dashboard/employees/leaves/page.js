@@ -1,14 +1,27 @@
 "use client";
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect,useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import LeaveDashboardCards from "../../../components/employees/leave-dashboard-cards";
-import AddEditLeave from '../../../components/employees/add-edit-leave'
+import AddLeave from "../../../components/employees/add-leave";
+import { useAuth } from "@/assets/hooks/use-auth";
+import { fetchLeaveData } from "@/app/redux/features/employees";
+import DeleteEditLeave from "../../../components/employees/delete-edit-leave";
 
 const Leaves = () => {
-  const { users } = useSelector((store) => store.users);
+  const { leave } = useSelector((store) => store.employee);
+  const dispatch = useDispatch();
+  const token = useAuth();
+
+  useEffect(() => {
+    if (token) {
+      dispatch(fetchLeaveData(token));
+    }
+  }, [token]);
+
+
   return (
     <>
-    <AddEditLeave />
+      <AddLeave />
       <LeaveDashboardCards />
       <div className="overflow-x-auto bg-white rounded my-4">
         <h1 className="p-2 text-sm font-bold">Leaves</h1>
@@ -25,33 +38,25 @@ const Leaves = () => {
             </tr>
           </thead>
           <tbody>
-            {users.map((user, index) => (
-              <tr
-                key={user.id}
-                className={`${
-                  index % 2 === 0 ? "bg-white" : "bg-gray-50"
-                } text-xs border border-background`}
-              >
-                <td className=" p-2 flex items-center gap-2">
-                  <img
-                    className="h-8 w-8 rounded-full object-cover"
-                    src="https://images.pexels.com/photos/4925896/pexels-photo-4925896.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                    alt=""
-                  />
-                  {user.username}
-                </td>
-                <td className=" p-2">{user.email}</td>
-                <td className=" p-2">{user.role}</td>
-                <td className=" p-2">{user.profile?.firstName}</td>
-                <td className=" p-2">{user.profile?.lastName}</td>
-                <td className=" p-2">{user.profile?.phoneNumber}</td>
-                <td className=" p-2">{user.profile?.gender}</td>
-                <td className=" p-2">{user.profile?.department}</td>
-                <td className=" p-2 font-bold cursor-pointer">
-                  <DeleteEditUser {...{ user }} />
-                </td>
-              </tr>
-            ))}
+            {Array.isArray(leave) &&
+              leave.map((leave, index) => (
+                <tr
+                  key={leave.id}
+                  className={`${
+                    index % 2 === 0 ? "bg-white" : "bg-gray-50"
+                  } text-xs border border-background`}
+                >
+                  <td className=" p-2">{leave?.leaveType}</td>
+                  <td className=" p-2">{leave?.fromDate}</td>
+                  <td className=" p-2">{leave?.toDate}</td>
+                  <td className=" p-2">{leave?.days}</td>
+                  <td className=" p-2">{leave?.reason}</td>
+                  <td className=" p-2">Status</td>
+                  <td className=" p-2 font-bold cursor-pointer">
+                    <DeleteEditLeave {...{ leave }} />
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </div>
