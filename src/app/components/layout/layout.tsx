@@ -7,7 +7,8 @@ const Sidebar = () => {
   return (
     <section className="bg-primary shadow h-screen">
       <div className="h-[10vh] flex items-center justify-center">
-        <Logo />
+        <h1>Logo</h1>
+        {/* <Logo /> */}
       </div>
       <div className="space-y-10 text-background my-4 px-6 py-8">
         <MenuChildren />

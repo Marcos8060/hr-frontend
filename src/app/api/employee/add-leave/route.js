@@ -2,9 +2,7 @@ import { API_URL } from '../../../../assets/api-endpoints/index';
 import { backendAxiosInstance } from "../../../../assets/hooks/backend-axios-instance";
 
 
-export async function GET(req) {
-  const token = req.headers.get("authorization");
-    console.log("Authorization Header:", token);
+export async function POST(req) {
   try {
     const config = {
       headers: {
@@ -12,8 +10,9 @@ export async function GET(req) {
       },
     };
 
+    const payload = await req.json();
   
-    const response = await backendAxiosInstance.get(`${API_URL.FETCH_PROFILE_DETAILS}`,config);
+    const response = await backendAxiosInstance.post(`${API_URL.ADD_LEAVE}`, payload, config);
 
     return new Response(JSON.stringify(response.data), {
       status: 200,

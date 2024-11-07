@@ -11,7 +11,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function AddEditLeave() {
+export default function EditLeave({ leave }) {
   const [open, setOpen] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
 
@@ -23,17 +23,20 @@ export default function AddEditLeave() {
     setOpen(false);
   };
 
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    const year = date.getFullYear();
+    return `${month}/${day}/${year}`;
+  };
+
   const initialValues = {
-    // firstName: profileData?.profile?.firstName || "",
-    // lastName: profileData?.profile?.lastName || "",
-    // phoneNumber: profileData?.profile?.phoneNumber || "",
-    // gender: profileData?.profile?.gender || "",
-    // department: profileData?.profile?.department || "",
-    // jobTitle: profileData?.profile?.jobTitle || "",
-    // employmentType: profileData?.profile?.employmentType || "",
-    // employmentStatus: profileData?.profile?.employmentStatus || "",
-    // supervisor: profileData?.profile?.supervisor || "",
-    // bankAccount: profileData?.profile?.bankAccount || "",
+    leaveType: leave?.leaveType || "",
+    fromDate: leave?.fromDate ? formatDate(leave.fromDate) : "",
+    toDate: leave?.toDate ? formatDate(leave.toDate) : "",
+    days: leave?.days || "",
+    reason: leave?.reason || "",
   };
 
   const handleAddLeave = async (formValue, helpers) => {
@@ -63,12 +66,9 @@ export default function AddEditLeave() {
   return (
     <>
       <div className="flex justify-end">
-        <button
-          className="bg-primary px-4 py-2 mb-1 rounded text-background shadow-xl text-xs"
-          onClick={handleClickOpen}
-        >
-          Add Leave
-        </button>
+        <p className="text-xs text-green" onClick={handleClickOpen}>
+          Edit Leave
+        </p>
       </div>
       <Dialog
         open={open}
@@ -80,7 +80,7 @@ export default function AddEditLeave() {
         aria-describedby="alert-dialog-slide-description"
       >
         <DialogContent>
-          <Formik initialValues={initialValues} onSubmit={handleAddLeave}>
+          <Formik initialValues={initialValues} onSubmit={handleAddLeave} enableReinitialize>
             <Form className="space-y-4 w-full">
               <div>
                 <label className="text-xs" htmlFor="">
@@ -91,8 +91,8 @@ export default function AddEditLeave() {
                   as="select"
                   className="block border rounded text-xs border-gray py-3 px-4 focus:outline-none w-full"
                   type="text"
-                  placeholder="employmentType"
-                  name="employmentType"
+                  placeholder="leave type"
+                  name="leaveType"
                 >
                   <option value="" disabled>
                     ---leave type---
@@ -133,7 +133,7 @@ export default function AddEditLeave() {
                   className="block border rounded text-xs border-gray py-3 px-4 focus:outline-none w-full"
                   type="text"
                   placeholder="No of days"
-                  name="jobTitle"
+                  name="days"
                 />
               </div>
               <div>

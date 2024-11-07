@@ -18,6 +18,11 @@ export const API_URL = {
     DELETE_USER: 'http://localhost:3000/api/delete-user',
     EDIT_USER: 'http://localhost:3000/api/edit-user',
 
+
+    /***************** EMPLOYEE APIS **********************/
+    FETCH_LEAVE: 'http://localhost:3000/api/get-leave',
+    ADD_LEAVE: 'http://localhost:3000/api/create-leave',
+    UPDATE_LEAVE: 'http://localhost:3000/api/update-leave',
    
 
 }
@@ -40,6 +45,12 @@ export const APP_API_URL = {
     CREATE_USERS: '/api/users/create-user',
     DELETE_USER: '/api/users/delete-user',
     EDIT_USER: '/api/users/edit-user',
+
+
+    /***************** LEAVE **********************/
+    FETCH_LEAVE: '/api/employee/fetch-leave',
+    ADD_LEAVE: '/api/employee/add-leave',
+    UPDATE_LEAVE: '/api/employee/update-leave',
    
 }
 
