@@ -47,3 +47,19 @@ export const updateLeave = async(payload,id,auth) =>{
         return error.message
     }
 }
+
+
+export const deleteLeave = async(id,auth) =>{
+    const axiosInstance = UseAxios();
+    try {
+        const response = await axiosInstance.delete(`${APP_API_URL.DELETE_LEAVE}`,{
+            headers:{
+                Authorization: auth ? `Bearer ${auth}` : undefined,
+            },
+            data: { userId: id }
+        })
+        return response.data;
+    } catch (error) {
+        return error.message
+    }
+}

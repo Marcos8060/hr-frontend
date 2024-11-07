@@ -1,6 +1,5 @@
 "use client";
 import { fetchAllUsers } from "@/app/redux/features/users";
-import { deleteUser } from "@/app/redux/services/users";
 import { useAuth } from "@/assets/hooks/use-auth";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -8,8 +7,9 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import { BsThreeDots } from "react-icons/bs";
 import { useDispatch } from "react-redux";
-// import EditUser from './edit-user'
 import EditLeave from "./update-leave";
+import { deleteLeave } from "@/app/redux/services/employees";
+import { fetchLeaveData } from "@/app/redux/features/employees";
 
 const DeleteEditLeave = ({ leave }) => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -25,12 +25,12 @@ const DeleteEditLeave = ({ leave }) => {
     setAnchorEl(null);
   };
 
-  const clearUser = async () => {
-    const response = await deleteUser(leave?.id, token);
+  const clearLeave = async () => {
+    const response = await deleteLeave(leave?.id, token);
     if (response === "Request failed with status code 404") {
-      toast.error("User not found");
+      toast.error("Leave not found");
     } else {
-      dispatch(fetchAllUsers(token));
+      dispatch(fetchLeaveData(token));
       toast.success(response.message);
     }
   };
@@ -60,7 +60,7 @@ const DeleteEditLeave = ({ leave }) => {
         </MenuItem>
         <MenuItem>
           <p
-            onClick={() => clearUser()}
+            onClick={() => clearLeave()}
             className="text-xs text-warning font-bold"
           >
             Delete
