@@ -1,11 +1,13 @@
 import * as React from "react";
-import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
-import DialogTitle from "@mui/material/DialogTitle";
 import Slide from "@mui/material/Slide";
-import { Formik, Field, Form, ErrorMessage } from "formik";
+import { Formik, Field, Form } from "formik";
+import { updateLeave } from "@/app/redux/services/employees";
+import toast from "react-hot-toast";
+import { fetchLeaveData } from "@/app/redux/features/employees";
+import { useAuth } from "@/assets/hooks/use-auth";
+import { useDispatch } from "react-redux";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -14,52 +16,37 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 export default function EditLeave({ leave }) {
   const [open, setOpen] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
+  const dispatch = useDispatch();
+  const token = useAuth();
 
   const handleClickOpen = () => {
     setOpen(true);
   };
 
-  const handleClose = () => {
+  const handleCloseModal = () => {
     setOpen(false);
-  };
-
-  const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const day = String(date.getDate()).padStart(2, '0');
-    const year = date.getFullYear();
-    return `${month}/${day}/${year}`;
   };
 
   const initialValues = {
     leaveType: leave?.leaveType || "",
-    fromDate: leave?.fromDate ? formatDate(leave.fromDate) : "",
-    toDate: leave?.toDate ? formatDate(leave.toDate) : "",
+    fromDate: leave?.fromDate || "",
+    toDate: leave?.toDate || "",
     days: leave?.days || "",
     reason: leave?.reason || "",
   };
 
-  const handleAddLeave = async (formValue, helpers) => {
+  const handleUpdateLeave = async (formValue, helpers) => {
     try {
       setLoading(true);
-      if (isEditMode) {
-        await updateProfile(formValue, auth);
-        helpers.resetForm();
-        setLoading(false);
-        toast.success("Profile updated successfully");
-        dispatch(fetchProfileData(auth));
-        setShowEditComponent(false);
-      } else {
-        await createProfile(formValue, auth);
-        helpers.resetForm();
-        setLoading(false);
-        toast.success("Profile created successfully");
-        dispatch(fetchProfileData(auth));
-        setShowEditComponent(false);
-      }
+      await updateLeave(formValue,leave?.id,token);
+      helpers.resetForm();
+      setLoading(false);
+      toast.success("Leave updated successfully");
+      dispatch(fetchLeaveData(token));
+      handleCloseModal();
     } catch (error) {
       setLoading(false);
-      toast.error("Failed to update profile");
+      toast.error("Failed to update leave");
     }
   };
 
@@ -76,11 +63,15 @@ export default function EditLeave({ leave }) {
         keepMounted
         maxWidth="xs"
         fullWidth
-        onClose={handleClose}
+        onClose={handleCloseModal}
         aria-describedby="alert-dialog-slide-description"
       >
         <DialogContent>
-          <Formik initialValues={initialValues} onSubmit={handleAddLeave} enableReinitialize>
+          <Formik
+            initialValues={initialValues}
+            onSubmit={handleUpdateLeave}
+            enableReinitialize
+          >
             <Form className="space-y-4 w-full">
               <div>
                 <label className="text-xs" htmlFor="">
@@ -97,9 +88,10 @@ export default function EditLeave({ leave }) {
                   <option value="" disabled>
                     ---leave type---
                   </option>
-                  <option value="Full-time">Full Time</option>
-                  <option value="Part-time">Part Time</option>
-                  <option value="Contract">Contract</option>
+                  <option value="Annual Leave">Annual Leave</option>
+                  <option value="Medical Leave">Medical Leave</option>
+                  <option value="Maternity Leave">Maternity Leave</option>
+                  <option value="Academic Leave">Academic Leave</option>
                 </Field>
               </div>
               <div>

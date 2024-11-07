@@ -10,9 +10,9 @@ export async function PUT(req) {
       },
     };
 
-    const payload = await req.json();
+    const { id, ...payloadWithoutId } = await req.json();
   
-    const response = await backendAxiosInstance.put(`${API_URL.UPDATE_LEAVE}`, payload, config);
+    const response = await backendAxiosInstance.put(`${API_URL.UPDATE_LEAVE}/${id}`, payloadWithoutId, config);
 
     return new Response(JSON.stringify(response.data), {
       status: 200,

@@ -30,10 +30,14 @@ export const createLeave = async(payload,auth) =>{
     }
 }
 
-export const updateLeave = async(payload,auth) =>{
+export const updateLeave = async(payload,id,auth) =>{
     const axiosInstance = UseAxios();
+    const data = {
+        ...payload,
+        id
+    }
     try {
-        const response = await axiosInstance.put(`${APP_API_URL.UPDATE_LEAVE}`,payload,{
+        const response = await axiosInstance.put(`${APP_API_URL.UPDATE_LEAVE}`,data,{
             headers:{
                 Authorization: auth ? `Bearer ${auth}` : undefined,
             }

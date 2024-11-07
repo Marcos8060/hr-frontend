@@ -9,7 +9,7 @@ import toast from "react-hot-toast";
 import { BsThreeDots } from "react-icons/bs";
 import { useDispatch } from "react-redux";
 // import EditUser from './edit-user'
-import AddEditLeave from "./update-leave";
+import EditLeave from "./update-leave";
 
 const DeleteEditLeave = ({ leave }) => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -56,7 +56,7 @@ const DeleteEditLeave = ({ leave }) => {
         }}
       >
         <MenuItem>
-          <AddEditLeave {...{ leave }} />
+          <EditLeave {...{ leave }} />
         </MenuItem>
         <MenuItem>
           <p
