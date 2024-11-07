@@ -1,7 +1,6 @@
 "use client";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { useState } from "react";
-import Link from "next/link";
 import { createProfile, updateProfile } from "@/app/redux/services/profile";
 import { useAuth } from "@/assets/hooks/use-auth";
 import toast from "react-hot-toast";
