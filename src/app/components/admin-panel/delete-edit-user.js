@@ -26,8 +26,8 @@ const DeleteEditUser = ({ user }) => {
 
   const clearUser = async () => {
     const response = await deleteUser(user?.id, token);
-    if (response === "Request failed with status code 404") {
-      toast.error("User not found");
+    if (response === "Request failed with status code 403") {
+      toast.error("You are not authorized to delete a user");
     } else {
       dispatch(fetchAllUsers(token));
       toast.success(response.message);

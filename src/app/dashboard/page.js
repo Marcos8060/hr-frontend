@@ -30,7 +30,10 @@ const Dashboard = () => {
           <Vacancies />
         </div>
       </div>
-      <UsersTable {...{ users }} />
+      <div className="bg-white shadow rounded-tl rounded-tr">
+        <h1 className="p-2 text-sm font-bold">Employees</h1>
+        <UsersTable {...{ users }} />
+      </div>
     </>
   );
 };

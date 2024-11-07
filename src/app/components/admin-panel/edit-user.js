@@ -38,10 +38,9 @@ const EditUser = ({ user }) => {
     setLoading(true);
     const response = await editUser(formValue,user?.id,token);
     if (response === "Request failed with status code 403") {
-      toast.error("You are not authorized to create user");
+      toast.error("You are not authorized to edit a user");
       handleClosePopOver();
       setLoading(false);
-      logoutUser();
     } else {
       helpers.resetForm();
       toast.success("edit successful");
