@@ -1,13 +1,14 @@
 import React from "react";
 import { HiUsers } from "react-icons/hi2";
 
-const LeaveDashboardCards = ({ users }) => {
+const LeaveDashboardCards = ({ leave }) => {
 
 
   // filter full time employees
-  const fullTimeEmployees = Array.isArray(users) && users.filter(( user) => user.profile?.employmentType === 'Full-time')
-  const contractEmployees = Array.isArray(users) && users.filter(( user) => user.profile?.employmentType === 'Contract')
-  const onLeaveEmployees = Array.isArray(users) && users.filter(( user) => user.profile?.employmentStatus === 'On Leave')
+  const annualLeave = Array.isArray(leave) && leave.filter(( item) => item.leaveType === 'Annual Leave')
+  const medicalLeave = Array.isArray(leave) && leave.filter(( item) => item.leaveType === 'Medical Leave')
+  const academicLeave = Array.isArray(leave) && leave.filter(( item) => item.leaveType === 'Academic Leave')
+  const maternityLeave = Array.isArray(leave) && leave.filter(( item) => item.leaveType === 'Maternity Leave')
     
   return (
     <section className="md:flex md:space-y-0 space-y-2 items-center gap-2 justify-between">
@@ -17,7 +18,7 @@ const LeaveDashboardCards = ({ users }) => {
           <p className="text-xs">Annual Leave</p>
         </div>
         <div className="flex items-center justify-between">
-          <p className="font-bold text-xl">{users?.length}</p>
+          <p className="font-bold text-xl">{annualLeave?.length}</p>
           <p className="text-xs font-bold text-green">100%</p>
         </div>
       </div>
@@ -27,7 +28,7 @@ const LeaveDashboardCards = ({ users }) => {
           <p className="text-xs">Medical Leave</p>
         </div>
         <div className="flex items-center justify-between">
-          <p className="font-bold text-xl">{fullTimeEmployees?.length}</p>
+          <p className="font-bold text-xl">{medicalLeave?.length}</p>
           <p className="text-xs font-bold text-green">100%</p>
         </div>
       </div>
@@ -37,7 +38,7 @@ const LeaveDashboardCards = ({ users }) => {
           <p className="text-xs">Academic Leave</p>
         </div>
         <div className="flex items-center justify-between">
-          <p className="font-bold text-xl">{contractEmployees?.length}</p>
+          <p className="font-bold text-xl">{academicLeave?.length}</p>
           <p className="text-xs font-bold text-green">100%</p>
         </div>
       </div>
@@ -47,7 +48,7 @@ const LeaveDashboardCards = ({ users }) => {
           <p className="text-xs">Maternity Leave</p>
         </div>
         <div className="flex items-center justify-between">
-          <p className="font-bold text-xl">{onLeaveEmployees?.length}</p>
+          <p className="font-bold text-xl">{maternityLeave?.length}</p>
           <p className="text-xs font-bold text-green">100%</p>
         </div>
       </div>

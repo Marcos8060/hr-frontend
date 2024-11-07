@@ -21,7 +21,7 @@ const CustomizedHeader = () => {
   };
 
   return (
-    <section className="h-[10vh] py-6 px-4 flex items-center justify-between">
+    <section className="h-[10vh] py-6 px-6 flex items-center justify-between">
       <div>
         <h1 className="font-bold text-2xl">Good morning {user?.username}</h1>
       </div>
