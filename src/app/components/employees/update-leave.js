@@ -13,7 +13,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function EditLeave({ leave }) {
+export default function EditLeave({ leave,handleCloseMenu }) {
   const [open, setOpen] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const dispatch = useDispatch();
@@ -44,8 +44,10 @@ export default function EditLeave({ leave }) {
       toast.success("Leave updated successfully");
       dispatch(fetchLeaveData(token));
       handleCloseModal();
+      handleCloseMenu();
     } catch (error) {
       setLoading(false);
+      handleCloseMenu();
       toast.error("Failed to update leave");
     }
   };

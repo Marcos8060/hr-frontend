@@ -1,5 +1,4 @@
 "use client";
-import { fetchAllUsers } from "@/app/redux/features/users";
 import { useAuth } from "@/assets/hooks/use-auth";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -12,17 +11,17 @@ import { deleteLeave } from "@/app/redux/services/employees";
 import { fetchLeaveData } from "@/app/redux/features/employees";
 
 const DeleteEditLeave = ({ leave }) => {
-  const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
+  const [menuItem, setMenuItem] = useState(null);
+  const open = Boolean(menuItem);
   const dispatch = useDispatch();
   const token = useAuth();
 
   const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+    setMenuItem(event.currentTarget);
   };
 
-  const handleClose = () => {
-    setAnchorEl(null);
+  const handleCloseMenu = () => {
+    setMenuItem(null);
   };
 
   const clearLeave = async () => {
@@ -32,6 +31,7 @@ const DeleteEditLeave = ({ leave }) => {
     } else {
       dispatch(fetchLeaveData(token));
       toast.success(response.message);
+      handleCloseMenu();
     }
   };
 
@@ -40,9 +40,9 @@ const DeleteEditLeave = ({ leave }) => {
       <BsThreeDots onClick={handleClick} className="cursor-pointer text-sm" />
       <Menu
         id="basic-menu"
-        anchorEl={anchorEl}
+        anchorEl={menuItem}
         open={open}
-        onClose={handleClose}
+        onClose={handleCloseMenu}
         anchorOrigin={{
           vertical: "bottom",
           horizontal: "left",
@@ -56,7 +56,7 @@ const DeleteEditLeave = ({ leave }) => {
         }}
       >
         <MenuItem>
-          <EditLeave {...{ leave }} />
+          <EditLeave {...{ leave, handleCloseMenu }} />
         </MenuItem>
         <MenuItem>
           <p
