@@ -56,7 +56,7 @@ const Profile = () => {
         {profileData?.profile === null ? (
           <div
           onClick={() => setShowEditComponent(true)}
-          className="flex items-center gap-2 bg-white shadow-2xl rounded px-3 py-2 cursor-pointer"
+          className="flex items-center gap-2 bg-primary text-background shadow-2xl rounded px-3 py-2 cursor-pointer"
         >
           <FaUserEdit className="" />
           <p className="text-xs font-bold">Create Profile</p>
@@ -64,7 +64,7 @@ const Profile = () => {
         ) : (
           <div
             onClick={() => setShowEditComponent(true)}
-            className="flex items-center gap-2 bg-white shadow-2xl rounded px-3 py-2 cursor-pointer"
+            className="flex items-center gap-2 bg-primary text-background shadow-xl rounded px-3 py-2 cursor-pointer"
           >
             <FaUserEdit className="" />
             <p className="text-xs font-bold">Edit Profile</p>
@@ -93,17 +93,17 @@ const Profile = () => {
             </div>
             <div className="w-4/12">
               <p className="text-xs uppercase">Bio</p>
-              <div className="bg-white shadow-2xl rounded-lg px-4 py-2 text-sm mt-4 flex flex-col">
+              <div className="bg-white shadow rounded px-4 py-2 text-sm mt-4 flex flex-col">
                 <span className="text-xs font-thin">role</span>
                 <span className="text-sm font-bold">{profileData?.role}</span>
               </div>
-              <div className="bg-white shadow-2xl rounded-lg px-4 py-2 text-sm mt-4 flex flex-col">
+              <div className="bg-white shadow rounded px-4 py-2 text-sm mt-4 flex flex-col">
                 <span className="text-xs font-thin">department</span>
                 <span className="text-sm font-bold">
                   {profileData?.profile?.department}
                 </span>
               </div>
-              <div className="bg-white shadow-2xl rounded-lg px-4 py-2 text-sm mt-4 flex flex-col">
+              <div className="bg-white shadow rounded px-4 py-2 text-sm mt-4 flex flex-col">
                 <span className="text-xs font-thin">supervisor</span>
                 <span className="text-sm font-bold">
                   {profileData?.profile?.supervisor}
@@ -112,17 +112,17 @@ const Profile = () => {
             </div>
             <div className="w-4/12">
               <p className="text-xs uppercase">Employement details</p>
-              <div className="bg-white shadow-2xl rounded-lg px-4 py-2 text-sm mt-4 flex flex-col">
+              <div className="bg-white shadow rounded px-4 py-2 text-sm mt-4 flex flex-col">
                 <span className="text-xs font-thin">bank details</span>
                 <span className="text-sm font-bold">
                   {profileData?.profile?.bankAccount}
                 </span>
               </div>
-              <div className="bg-white shadow-2xl rounded-lg px-4 py-2 text-sm mt-4 flex flex-col">
+              <div className="bg-white shadow rounded px-4 py-2 text-sm mt-4 flex flex-col">
                 <span className="text-xs font-thin">email</span>
                 <span className="text-sm font-bold">{profileData?.email}</span>
               </div>
-              <div className="bg-white shadow-2xl rounded-lg px-4 py-2 text-sm mt-4 flex flex-col">
+              <div className="bg-white shadow rounded px-4 py-2 text-sm mt-4 flex flex-col">
                 <span className="text-xs font-thin">employment status</span>
                 <span className="text-sm font-bold">
                   {profileData?.profile?.employmentStatus}
@@ -135,13 +135,13 @@ const Profile = () => {
             <h1 className="uppercase text-xs">Employee details</h1>
             <section className="flex items-center justify-between gap-4">
               <div className="w-4/12">
-                <div className="bg-white shadow-2xl rounded-lg px-4 py-2 text-sm mt-4 flex flex-col">
+                <div className="bg-white shadow rounded px-4 py-2 text-sm mt-4 flex flex-col">
                   <span className="text-xs font-thin">firstname</span>
                   <span className="text-sm font-bold">
                     {profileData?.profile?.firstName}
                   </span>
                 </div>
-                <div className="bg-white shadow-2xl rounded-lg px-4 py-2 text-sm mt-4 flex flex-col">
+                <div className="bg-white shadow rounded px-4 py-2 text-sm mt-4 flex flex-col">
                   <span className="text-xs font-thin">lastname</span>
                   <span className="text-sm font-bold">
                     {profileData?.profile?.lastName}
@@ -149,13 +149,13 @@ const Profile = () => {
                 </div>
               </div>
               <div className="w-4/12">
-                <div className="bg-white shadow-2xl rounded-lg px-4 py-2 text-sm mt-4 flex flex-col">
+                <div className="bg-white shadow rounded px-4 py-2 text-sm mt-4 flex flex-col">
                   <span className="text-xs font-thin">phonenumber</span>
                   <span className="text-sm font-bold">
                     {profileData?.profile?.phoneNumber}
                   </span>
                 </div>
-                <div className="bg-white shadow-2xl rounded-lg px-4 py-2 text-sm mt-4 flex flex-col">
+                <div className="bg-white shadow rounded px-4 py-2 text-sm mt-4 flex flex-col">
                   <span className="text-xs font-thin">gender</span>
                   <span className="text-sm font-bold">
                     {profileData?.profile?.gender}
@@ -163,13 +163,13 @@ const Profile = () => {
                 </div>
               </div>
               <div className="w-4/12">
-                <div className="bg-white shadow-2xl rounded-lg px-4 py-2 text-sm mt-4 flex flex-col">
+                <div className="bg-white shadow rounded px-4 py-2 text-sm mt-4 flex flex-col">
                   <span className="text-xs font-thin">job title</span>
                   <span className="text-sm font-bold">
                     {profileData?.profile?.jobTitle}
                   </span>
                 </div>
-                <div className="bg-white shadow-2xl rounded-lg px-4 py-2 text-sm mt-4 flex flex-col">
+                <div className="bg-white shadow rounded px-4 py-2 text-sm mt-4 flex flex-col">
                   <span className="text-xs font-thin">employment type</span>
                   <span className="text-sm font-bold">
                     {profileData?.profile?.employmentType}

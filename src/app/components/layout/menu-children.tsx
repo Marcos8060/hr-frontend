@@ -56,12 +56,13 @@ const MenuChildren = () => {
                       <Link
                         key={index}
                         href={`${child.path}`}
-                        className={`flex items-center gap-4 ${
+                        className={`flex items-center gap-2 ${
                           currentPath === child.path
                             ? "bg-background rounded-3xl px-3 py-2 text-primary"
-                            : "text-primary"
+                            : "text-background"
                         }`}
                       >
+                        <p>{child.icon}</p>
                         <p className="text-sm">{child.label}</p>
                       </Link>
                     ))}
