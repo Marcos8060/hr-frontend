@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchProfile } from '../../services/profile'
-import { fetchLeave } from "../../services/employees";
+import { fetchAllLeaves, fetchUserLeave } from "../../services/employees";
 
 
 const initialState = {
-  leave: [],
+  leaves: [],
+  allLeaves: [],
 };
 
 const EmployeeSlice = createSlice({
@@ -12,7 +12,10 @@ const EmployeeSlice = createSlice({
   initialState,
   reducers: {
     setLeave: (state, action) => {
-      state.leave = action.payload;
+      state.leaves = action.payload;
+    },
+    setAllLeaves: (state, action) => {
+      state.allLeaves = action.payload;
     },
     
   },
@@ -20,14 +23,24 @@ const EmployeeSlice = createSlice({
 
 export const {
   setLeave,
+  setAllLeaves,
 } = EmployeeSlice.actions;
 
 
 export const fetchLeaveData = (auth) => async (dispatch) => {
     
     try {
-      const data = await fetchLeave(auth);
+      const data = await fetchUserLeave(auth);
       dispatch(setLeave(data));
+    } catch (error) {
+      dispatch(setError(error.message));
+    }
+  };
+export const fetchGeneralLeaveData = (auth) => async (dispatch) => {
+    
+    try {
+      const data = await fetchAllLeaves(auth);
+      dispatch(setAllLeaves(data));
     } catch (error) {
       dispatch(setError(error.message));
     }

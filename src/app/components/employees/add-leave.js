@@ -41,7 +41,7 @@ export default function AddLeave() {
       await createLeave(formValue,token);
       helpers.resetForm();
       setLoading(false);
-      toast.success("Leave created successfully");
+      toast.success("Leave application successful");
       dispatch(fetchLeaveData(token));
       handleClose();
     } catch (error) {
@@ -54,7 +54,7 @@ export default function AddLeave() {
     <>
       <div className="flex justify-end">
         <button className="text-xs bg-primary text-background px-4 py-2 rounded shadow-xl mb-1" onClick={handleClickOpen}>
-          Add Leave
+          Apply Leave
         </button>
       </div>
       <Dialog

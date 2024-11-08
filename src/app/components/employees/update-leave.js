@@ -13,7 +13,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function EditLeave({ leave,handleCloseMenu }) {
+export default function EditLeave({ leave, handleCloseMenu }) {
   const [open, setOpen] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const dispatch = useDispatch();
@@ -27,18 +27,10 @@ export default function EditLeave({ leave,handleCloseMenu }) {
     setOpen(false);
   };
 
-  const initialValues = {
-    leaveType: leave?.leaveType || "",
-    fromDate: leave?.fromDate || "",
-    toDate: leave?.toDate || "",
-    days: leave?.days || "",
-    reason: leave?.reason || "",
-  };
-
   const handleUpdateLeave = async (formValue, helpers) => {
     try {
       setLoading(true);
-      await updateLeave(formValue,leave?.id,token);
+      await updateLeave(formValue, leave?.id, token);
       helpers.resetForm();
       setLoading(false);
       toast.success("Leave updated successfully");

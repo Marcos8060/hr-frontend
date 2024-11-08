@@ -20,7 +20,8 @@ export const API_URL = {
 
 
     /***************** EMPLOYEE APIS **********************/
-    FETCH_LEAVE: 'http://localhost:3000/api/get-leave',
+    FETCH_USER_LEAVE: 'http://localhost:3000/api/get-leave',
+    FETCH_ALL_LEAVES: 'http://localhost:3000/api/fetch-all-leaves',
     ADD_LEAVE: 'http://localhost:3000/api/create-leave',
     UPDATE_LEAVE: 'http://localhost:3000/api/update-leave',
     DELETE_LEAVE: 'http://localhost:3000/api/delete-leave',
@@ -49,7 +50,8 @@ export const APP_API_URL = {
 
 
     /***************** LEAVE **********************/
-    FETCH_LEAVE: '/api/employee/fetch-leave',
+    FETCH_USER_LEAVE: '/api/employee/fetch-user-leave',
+    FETCH_ALL_LEAVES: '/api/employee/fetch-all-leaves',
     ADD_LEAVE: '/api/employee/add-leave',
     UPDATE_LEAVE: '/api/employee/update-leave',
     DELETE_LEAVE: '/api/employee/delete-leave',
