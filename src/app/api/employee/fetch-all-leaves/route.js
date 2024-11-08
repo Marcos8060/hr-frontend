@@ -13,7 +13,7 @@ export async function GET(req) {
     };
 
   
-    const response = await backendAxiosInstance.get(`${API_URL.FETCH_LEAVE}`,config);
+    const response = await backendAxiosInstance.get(`${API_URL.FETCH_ALL_LEAVES}`,config);
 
     return new Response(JSON.stringify(response.data), {
       status: 200,

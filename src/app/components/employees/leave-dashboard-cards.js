@@ -1,14 +1,14 @@
 import React from "react";
 import { HiUsers } from "react-icons/hi2";
 
-const LeaveDashboardCards = ({ leave }) => {
-
+const LeaveDashboardCards = ({ allLeaves }) => {
+  console.log("ALL_LEAVES ",allLeaves)
 
   // filter full time employees
-  const annualLeave = Array.isArray(leave) && leave.filter(( item) => item.leaveType === 'Annual Leave')
-  const medicalLeave = Array.isArray(leave) && leave.filter(( item) => item.leaveType === 'Medical Leave')
-  const academicLeave = Array.isArray(leave) && leave.filter(( item) => item.leaveType === 'Academic Leave')
-  const maternityLeave = Array.isArray(leave) && leave.filter(( item) => item.leaveType === 'Maternity Leave')
+  const annualLeave = Array.isArray(allLeaves) && allLeaves.filter(( item) => item.leaveType === 'Annual Leave')
+  const medicalLeave = Array.isArray(allLeaves) && allLeaves.filter(( item) => item.leaveType === 'Medical Leave')
+  const academicLeave = Array.isArray(allLeaves) && allLeaves.filter(( item) => item.leaveType === 'Academic Leave')
+  const maternityLeave = Array.isArray(allLeaves) && allLeaves.filter(( item) => item.leaveType === 'Maternity Leave')
     
   return (
     <section className="md:flex md:space-y-0 space-y-2 items-center gap-2 justify-between">
