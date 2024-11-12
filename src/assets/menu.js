@@ -11,15 +11,18 @@ export const menu = [
     label: "Dashboard",
     path: "/dashboard",
     icon: <BiSolidDashboard />,
+    role: ["Employee", "Admin", "Staff","Human Resource"]
   },
   {
     label: "Admin Panel",
     path: "/dashboard/admin-panel",
     icon: <RiAdminFill />,
+    role: ["Admin","Human Resource"]
   },
   {
     label: "Employees",
     icon: <FaUser />,
+    role: ["Admin","Human Resource","Staff"],
     children: [
       {
         label: "Leaves",
@@ -32,26 +35,5 @@ export const menu = [
         icon: <GoDotFill className="text-xs" />,
       },
     ],
-  },
-  {
-    label: "Visitors",
-    icon: <FaPerson />,
-    children: [
-      {
-        label: "visits",
-        path: "/dashboard/visitors",
-        icon: <GoDotFill className="text-xs" />,
-      },
-      {
-        label: "appointments",
-        path: "/dashboard/visitors/appointments",
-        icon: <GoDotFill className="text-xs" />,
-      },
-    ],
-  },
-  {
-    label: "Reports",
-    path: "/dashboard/reports",
-    icon: <BiSolidReport />,
   },
 ];

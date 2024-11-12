@@ -2,7 +2,6 @@ import React from "react";
 import { HiUsers } from "react-icons/hi2";
 
 const LeaveDashboardCards = ({ allLeaves }) => {
-  console.log("ALL_LEAVES ",allLeaves)
 
   // filter full time employees
   const annualLeave = Array.isArray(allLeaves) && allLeaves.filter(( item) => item.leaveType === 'Annual Leave')
