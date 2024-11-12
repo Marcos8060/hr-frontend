@@ -1,22 +1,27 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { menu } from "../../../assets/menu";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { IoChevronDownOutline } from "react-icons/io5";
 import { IoChevronForward } from "react-icons/io5";
+import { authContext } from "@/assets/context/use-context";
 
 const MenuChildren = () => {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [openIndex, setOpenIndex] = useState(null);
   const currentPath = usePathname();
+  const { user } = useContext(authContext)
 
-  const handleOpen = (index: number) => {
+  const handleOpen = (index) => {
     // Toggle the open state: open if currently closed, close if currently open
     setOpenIndex(openIndex === index ? null : index);
   };
 
+  // filter menus based on user role
+  const filteredMenus = menu.filter((item) => item.role.includes(user?.role));
+
   return (
     <>
-      {menu.map((item, index) => {
+      {filteredMenus.map((item, index) => {
         const isOpen = openIndex === index;
         const icon = isOpen ? <IoChevronDownOutline /> : <IoChevronForward />;
 
