@@ -80,8 +80,8 @@ const Profile = () => {
             <div className="w-4/12">
               <p className="text-xs uppercase">Profile image</p>
               <img
-                className="rounded h-56 mt-4 object-cover shadow-2xl"
-                src="https://images.pexels.com/photos/4925896/pexels-photo-4925896.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                className="rounded h-56 w-full mt-4 object-cover shadow-2xl"
+                src={profileData?.profile?.image}
                 alt=""
               />
               <div className="flex items-center justify-center cursor-pointer gap-2 mt-2">

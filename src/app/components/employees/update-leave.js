@@ -27,6 +27,14 @@ export default function EditLeave({ leave, handleCloseMenu }) {
     setOpen(false);
   };
 
+  const initialValues = {
+    leaveType: leave?.leaveType || "",
+    fromDate: leave?.fromDate || "",
+    toDate: leave?.toDate || "",
+    days: leave?.days || "",
+    reason: leave?.reason || "",
+  };
+
   const handleUpdateLeave = async (formValue, helpers) => {
     try {
       setLoading(true);
