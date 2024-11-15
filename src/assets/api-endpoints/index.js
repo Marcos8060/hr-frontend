@@ -25,6 +25,10 @@ export const API_URL = {
     ADD_LEAVE: 'http://localhost:3000/api/create-leave',
     UPDATE_LEAVE: 'http://localhost:3000/api/update-leave',
     DELETE_LEAVE: 'http://localhost:3000/api/delete-leave',
+
+
+    /***************** JOBS APIS **********************/
+    FETCH_JOBS: 'http://localhost:3000/api/get-jobs',
    
 
 }
@@ -56,6 +60,9 @@ export const APP_API_URL = {
     UPDATE_LEAVE: '/api/employee/update-leave',
     DELETE_LEAVE: '/api/employee/delete-leave',
    
+
+     /***************** JOBS **********************/
+     FETCH_JOBS: '/api/jobs/fetch-jobs',
 }
 
 export const API_METHODS = {
