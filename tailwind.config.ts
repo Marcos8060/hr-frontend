@@ -11,7 +11,7 @@ const config: Config = {
       colors:{
         primary: '#142687',
         white: '#FFFFFF',
-        background: '#F2F2F2',
+        background: '#DEE6EB',
         black: '#000000',
         gradientFrom: '#1F3D8E',
         gradientTo: '#3D76E4',
