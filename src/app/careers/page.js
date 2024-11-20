@@ -57,7 +57,7 @@ const Careers = () => {
                       <div className=" border-b border-dashed border-gray my-2"></div>
                       <footer className="flex items-center justify-between text-xs">
                         <div>
-                          <small className="font-bold">23 Applicants</small>
+                          <small className="font-bold">{job.applications?.length} Applicannt(s)</small>
                         </div>
                         <div className="flex items-center gap-1">
                           <small className="font-bold">Company Verified</small>
@@ -92,7 +92,7 @@ const Careers = () => {
                   </p>
                 </div>
                 <div>
-                  <ApplyJobModal />
+                  <ApplyJobModal {...{ jobs,selectedJob }} />
                 </div>
               </div>
               <hr className="text-gray my-4" />
