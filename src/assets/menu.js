@@ -22,7 +22,7 @@ export const menu = [
   {
     label: "Employees",
     icon: <FaUser />,
-    role: ["Admin","Human Resource","Staff"],
+    role: ["Admin","Human Resource","Staff","Employee"],
     children: [
       {
         label: "Leaves",

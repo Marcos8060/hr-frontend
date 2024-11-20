@@ -1,9 +1,9 @@
-"use client"
+"use client";
 import * as React from "react";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import Slide from "@mui/material/Slide";
-import { Formik, Field, Form  } from "formik";
+import { Formik, Field, Form } from "formik";
 import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
 
@@ -25,11 +25,10 @@ export default function ApplyJobModal() {
   };
 
   const initialValues = {
-    leaveType: "",
-    fromDate: "",
-    toDate: "",
-    days: "",
-    reason: "",
+    firstName: "",
+    lastName: "",
+    yearsOfExperience: "",
+    resume: "",
   };
 
   const handleApplyJob = async (formValue, helpers) => {
@@ -50,7 +49,10 @@ export default function ApplyJobModal() {
   return (
     <>
       <div className="flex justify-end">
-        <button className="text-xs bg-primary text-background px-4 py-2 rounded" onClick={handleClickOpen}>
+        <button
+          className="text-xs bg-primary text-background px-4 py-2 rounded"
+          onClick={handleClickOpen}
+        >
           Apply
         </button>
       </div>
@@ -68,71 +70,49 @@ export default function ApplyJobModal() {
             <Form className="space-y-4 w-full">
               <div>
                 <label className="text-xs" htmlFor="">
-                  Leave Type
+                  First Name
                 </label>
                 <Field
                   required
-                  as="select"
-                  className="block border rounded text-xs border-gray py-3 px-4 focus:outline-none w-full"
+                  className="block border rounded text-xs border-gray py-2 px-4 focus:outline-none w-full"
                   type="text"
-                  name="leaveType"
-                >
-                  <option value="" disabled>
-                    ---leave type---
-                  </option>
-                  <option value="Annual Leave">Annual Leave</option>
-                  <option value="Medical Leave">Medical Leave</option>
-                  <option value="Maternity Leave">Maternity Leave</option>
-                  <option value="Academic Leave">Academic Leave</option>
-                </Field>
-              </div>
-              <div>
-                <label className="text-xs" htmlFor="">
-                  From
-                </label>
-                <Field
-                  required
-                  className="block border rounded text-xs border-gray py-3 px-4 focus:outline-none w-full"
-                  type="date"
-                  name="fromDate"
+                  name="firstName"
                 />
               </div>
               <div>
                 <label className="text-xs" htmlFor="">
-                  To
+                  Last Name
                 </label>
                 <Field
                   required
-                  className="block border rounded text-xs border-gray py-3 px-4 focus:outline-none w-full"
-                  type="date"
-                  name="toDate"
-                />
-              </div>
-              <div>
-                <label className="text-xs" htmlFor="">
-                  Number of Days
-                </label>
-                <Field
-                  required
-                  className="block border rounded text-xs border-gray py-3 px-4 focus:outline-none w-full"
+                  className="block border rounded text-xs border-gray py-2 px-4 focus:outline-none w-full"
                   type="text"
-                  placeholder="No of days"
-                  name="days"
+                  name="lastNae"
                 />
               </div>
               <div>
                 <label className="text-xs" htmlFor="">
-                  Leave Reason
+                  Years Of Experience
                 </label>
                 <Field
                   required
-                  as="textarea"
-                  className="block border rounded text-xs border-gray py-3 px-4 focus:outline-none w-full"
-                  type="text"
-                  placeholder="leave reason"
-                  name="reason"
+                  className="block border rounded text-xs border-gray py-2 px-4 focus:outline-none w-full"
+                  type="number"
+                  name="yearsOfExperience"
                 />
               </div>
+              <div>
+                <label className="text-xs" htmlFor="">
+                  Attach Resume
+                </label>
+                <Field
+                  required
+                  className="block border rounded text-xs border-gray py-2 px-4 focus:outline-none w-full"
+                  type="file"
+                  name="resume"
+                />
+              </div>
+
               <div className="flex justify-end">
                 <button
                   type="submit"
