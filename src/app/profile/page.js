@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import EditProfile from "../components/user-profile";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { FaUserCircle } from "react-icons/fa";
 
 const Profile = () => {
   const { profileData } = useSelector((store) => store.profile);
@@ -30,7 +31,7 @@ const Profile = () => {
           setLoading(false);
         });
     }
-  }, [token]);
+  }, [token,profileData]);
 
   useEffect(() => {
     if (profileData?.profile) {
@@ -48,11 +49,15 @@ const Profile = () => {
             <IoIosArrowRoundBack />
           </div>
           <div>
-            <img
-              className="h-10 w-10 rounded-full object-cover shadow-xl"
-              src="https://images.pexels.com/photos/4925896/pexels-photo-4925896.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-              alt=""
-            />
+            {!profileData.profile?.image ? (
+              <FaUserCircle className="w-8 h-8" />
+            ) : (
+              <img
+                className="h-10 w-10 rounded-full object-cover shadow-xl"
+                src={profileData.profile?.image}
+                alt=""
+              />
+            )}
           </div>
           <div>
             <p className="text-xl font-bold ">{user?.username}</p>
@@ -94,11 +99,15 @@ const Profile = () => {
               ) : (
                 <>
                   <p className="text-xs uppercase">Profile image</p>
-                  <img
-                    className="rounded h-56 w-full mt-4 object-cover shadow-2xl"
-                    src={profileData?.profile?.image}
-                    alt=""
-                  />
+                  {!profileData.profile.image ? (
+                    <FaUserCircle className="w-40 h-56" />
+                  ) : (
+                    <img
+                      className="rounded h-56 w-full mt-4 object-cover shadow-2xl"
+                      src={profileData?.profile?.image}
+                      alt=""
+                    />
+                  )}
                 </>
               )}
             </div>
