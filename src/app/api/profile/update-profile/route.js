@@ -7,10 +7,11 @@ export async function PUT(req) {
     const config = {
       headers: {
         Authorization: req.headers.get("authorization"),
+        "Content-Type": "multipart/form-data",
       },
     };
 
-    const payload = await req.json();
+    const payload = await req.formData();
   
     const response = await backendAxiosInstance.put(`${API_URL.UPDATE_PROFILE_DETAILS}`, payload, config);
 

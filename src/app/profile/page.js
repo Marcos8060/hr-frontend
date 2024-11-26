@@ -84,12 +84,6 @@ const Profile = () => {
                 src={profileData?.profile?.image}
                 alt=""
               />
-              <div className="flex items-center justify-center cursor-pointer gap-2 mt-2">
-                <BsCardImage className="text-link" />
-                <p className="text-link font-bold text-xs text-center">
-                  change profile image
-                </p>
-              </div>
             </div>
             <div className="w-4/12">
               <p className="text-xs uppercase">Bio</p>

@@ -27,6 +27,7 @@ export const createProfile = async (payload, auth) => {
       {
         headers: {
           Authorization: auth ? `Bearer ${auth}` : undefined,
+          "Content-Type": "multipart/form-data",
         },
       }
     );
@@ -45,7 +46,7 @@ export const updateProfile = async (payload, auth) => {
       {
         headers: {
           Authorization: auth ? `Bearer ${auth}` : undefined,
-          "Content-Type": "Application/json",
+          "Content-Type": "multipart/form-data",
         },
       }
     );
