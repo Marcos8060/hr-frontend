@@ -18,12 +18,10 @@ export default function Home() {
   const handleLogin = async (formValue: any, helpers: any) => {
     try {
       setLoading(true);
-      await loginUser(formValue.email, formValue.password).then(
-        (res: any) => {
-          helpers.resetForm();
-          setLoading(false);
-        }
-      );
+      const res = await loginUser(formValue.email, formValue.password);
+      console.log("LOGIN_RESPONSE ",res);
+      setLoading(false);
+      helpers.resetForm();
     } catch (err) {
       setLoading(false);
     }
@@ -38,26 +36,23 @@ export default function Home() {
           </h1>
         </div>
         <div className="md:w-1/2 w-full bg-white shadow md:px-12 px-4 md:rounded-tr-xl md:rounded-br-xl h-[70vh] flex items-center justify-center">
-          <Formik
-            initialValues={initialValues}
-            onSubmit={handleLogin}
-          >
+          <Formik initialValues={initialValues} onSubmit={handleLogin}>
             <Form className="space-y-4 w-full">
-                <Field
-                  required
-                  id="username"
-                  className="block border rounded text-xs border-gray py-3 px-4 focus:outline-none w-full"
-                  type="email"
-                  placeholder="email"
-                  name="email"
-                />
-                <Field
-                  id="password"
-                  className="block border rounded text-xs border-gray py-3 px-4 focus:outline-none w-full"
-                  type="password"
-                  placeholder="Password"
-                  name="password"
-                />
+              <Field
+                required
+                id="username"
+                className="block border rounded text-xs border-gray py-3 px-4 focus:outline-none w-full"
+                type="email"
+                placeholder="email"
+                name="email"
+              />
+              <Field
+                id="password"
+                className="block border rounded text-xs border-gray py-3 px-4 focus:outline-none w-full"
+                type="password"
+                placeholder="Password"
+                name="password"
+              />
               <button
                 id="loginButton"
                 type="submit"
