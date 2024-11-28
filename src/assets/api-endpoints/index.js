@@ -29,6 +29,7 @@ export const API_URL = {
 
     /***************** JOBS APIS **********************/
     FETCH_JOBS: 'http://localhost:3000/api/get-jobs',
+    APPLY_JOB: 'http://localhost:3000/api/send-application',
    
 
 }
@@ -63,6 +64,7 @@ export const APP_API_URL = {
 
      /***************** JOBS **********************/
      FETCH_JOBS: '/api/jobs/fetch-jobs',
+     APPLY_JOB: '/api/jobs/apply-job',
 }
 
 export const API_METHODS = {

@@ -1,19 +1,18 @@
 import { API_URL } from '../../../../assets/api-endpoints/index';
 import { backendAxiosInstance } from "../../../../assets/hooks/backend-axios-instance";
 
-
-export async function PUT(req) {
+export async function POST(req) {
   try {
-    const config = {
-      headers: {
-        Authorization: req.headers.get("authorization"),
-        "Content-Type": "multipart/form-data",
-      },
-    };
+    // Directly process the incoming FormData
+    const formData = await req.formData();  // Use formData() instead of json()
 
-    const payload = await req.formData();
-  
-    const response = await backendAxiosInstance.put(`${API_URL.UPDATE_PROFILE_DETAILS}`, payload, config);
+
+    // Pass form data directly to the backend
+    const response = await backendAxiosInstance.post(`${API_URL.APPLY_JOB}`, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data", 
+      },
+    });
 
     return new Response(JSON.stringify(response.data), {
       status: 200,

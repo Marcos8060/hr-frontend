@@ -23,6 +23,7 @@ const AllLeavesTable = () => {
           <thead className="bg-primary rounded-xl text-background px-4 text-xs">
             <tr>
               <th className="p-2 text-center">Leave Type</th>
+              <th className="p-2 text-center">Applicant</th>
               <th className="p-2 text-center">From</th>
               <th className="p-2 text-center">To</th>
               <th className="p-2 text-center">No of Days</th>
@@ -51,6 +52,7 @@ const AllLeavesTable = () => {
                   } text-xs border border-background`}
                 >
                   <td className="p-2 text-center">{leave.leaveType}</td>
+                  <td className="p-2 text-center">{leave.applicant.username}</td>
                   <td className="p-2 text-center">{leave.fromDate}</td>
                   <td className="p-2 text-center">{leave.toDate}</td>
                   <td className="p-2 text-center">{leave.days}</td>
