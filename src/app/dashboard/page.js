@@ -47,7 +47,7 @@ const Dashboard = () => {
     <>
       <DashboardCards {...{ users }} />
       <div className="flex gap-2">
-        <div className="w-9/12 py-1">
+        <div className="w-9/12">
           {loading ? (
             <Skeleton
               baseColor="#c0c0c0"
@@ -59,7 +59,7 @@ const Dashboard = () => {
             <LeaveGraph />
           )}
         </div>
-        <div className="w-3/12 py-1">
+        <div className="w-3/12">
           {loading ? (
             <Skeleton
               baseColor="#c0c0c0"

@@ -84,7 +84,7 @@ const LeaveGraph = () => {
   })
 
   return (
-    <div className="my-4">
+    <div className="my-2">
       <HighchartsReact highcharts={Highcharts} options={options} />
     </div>
   );

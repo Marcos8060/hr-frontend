@@ -4,11 +4,11 @@ import React, { useEffect } from "react";
 export const Vacancies = ({ jobs }) => {
   return (
     <>
-      <div className="bg-white rounded shadow p-2 mt-4">
+      <div className="bg-white rounded shadow p-2 mt-2">
         <h1 className="text-sm font-bold">Current Vacancies</h1>
         <hr className="text-gray my-4" />
         {Array.isArray(jobs) &&
-          jobs.map((job, index) => (
+          jobs.map((job) => (
             <div key={job.id} className="text-xs">
               <div className="">
                 <p className="font-bold">{job.title}</p>
