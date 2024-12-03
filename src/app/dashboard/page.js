@@ -18,7 +18,6 @@ const Dashboard = () => {
   const token = useAuth();
   const { users } = useSelector((store) => store.users);
   const { jobs } = useSelector((store) => store.jobs);
-  const { allLeaves } = useSelector((store) => store.employee);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

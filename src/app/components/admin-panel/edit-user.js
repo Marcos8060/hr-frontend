@@ -7,12 +7,10 @@ import { editUser } from "@/app/redux/services/users";
 import { useDispatch } from "react-redux";
 import { fetchAllUsers } from "@/app/redux/features/users";
 import { useAuth } from "@/assets/hooks/use-auth";
-import { authContext } from "@/assets/context/use-context";
 
 const EditUser = ({ user }) => {
   const [loading, setLoading] = useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const { logoutUser } = useContext(authContext);
   const dispatch = useDispatch();
   const token = useAuth();
 

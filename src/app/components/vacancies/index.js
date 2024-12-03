@@ -1,5 +1,3 @@
-import { fetchJobs } from "@/app/redux/features/jobs";
-import React, { useEffect } from "react";
 
 export const Vacancies = ({ jobs }) => {
   return (

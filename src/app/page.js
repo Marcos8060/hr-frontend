@@ -1,6 +1,5 @@
 "use client";
-import * as Yup from "yup";
-import { Formik, Field, Form, ErrorMessage } from "formik";
+import { Formik, Field, Form } from "formik";
 import { useState } from "react";
 import Link from "next/link";
 import { useContext } from "react";
@@ -15,7 +14,7 @@ export default function Home() {
     password: "",
   };
 
-  const handleLogin = async (formValue: any, helpers: any) => {
+  const handleLogin = async (formValue, helpers) => {
     try {
       setLoading(true);
       const res = await loginUser(formValue.email, formValue.password);

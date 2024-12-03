@@ -1,6 +1,4 @@
 import { BiSolidDashboard } from "react-icons/bi";
-import { FaPerson } from "react-icons/fa6";
-import { BiSolidReport } from "react-icons/bi";
 import { RiAdminFill } from "react-icons/ri";
 import { FaUser } from "react-icons/fa";
 import { GoDotFill } from "react-icons/go";

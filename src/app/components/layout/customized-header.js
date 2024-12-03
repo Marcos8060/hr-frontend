@@ -12,7 +12,7 @@ const CustomizedHeader = () => {
 
   const open = Boolean(anchorEl);
 
-  const handleClick = (event: any) => {
+  const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
 

@@ -48,7 +48,7 @@ export default function EditLeave({ leave, handleCloseMenu }) {
     } catch (error) {
       setLoading(false);
       handleCloseMenu();
-      toast.error("Failed to update leave");
+      toast.error(error);
     }
   };
 

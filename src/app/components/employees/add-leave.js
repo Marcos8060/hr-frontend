@@ -46,7 +46,7 @@ export default function AddLeave() {
       handleClose();
     } catch (error) {
       setLoading(false);
-      toast.error("Failed to create leave");
+      toast.error(error);
     }
   };
 
