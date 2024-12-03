@@ -23,6 +23,7 @@ export default function Home() {
       helpers.resetForm();
     } catch (err) {
       setLoading(false);
+      toast.error(err);
     }
   };
 
