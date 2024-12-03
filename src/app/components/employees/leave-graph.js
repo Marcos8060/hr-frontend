@@ -30,7 +30,7 @@ const LeaveGraph = () => {
   const maternityLeaveCount = Array.isArray(allLeaves) ? allLeaves.filter((item) => item.leaveType === "Maternity Leave").length : 0;
 
 
-  const [options, setOptions] = useState({
+  const [options] = useState({
     chart: {
       type: "column",
       height: 300,
