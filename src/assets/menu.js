@@ -5,22 +5,16 @@ import { GoDotFill } from "react-icons/go";
 
 export const menu = [
   {
-    label: "Dashboard",
+    label: "Admin Dashboard",
     path: "/dashboard",
     icon: <BiSolidDashboard />,
-    role: ["Employee", "Admin", "Staff", "Human Resource"],
-    children: [
-      {
-        label: "Admin Dashboard",
-        path: "/dashboard/employees/leaves",
-        icon: <GoDotFill className="text-xs" />,
-      },
-      {
-        label: "Employee Dashboard",
-        path: "/dashboard/employees/leaves",
-        icon: <GoDotFill className="text-xs" />,
-      },
-    ],
+    role: ["Admin", "Human Resource"],
+  },
+  {
+    label: "Employee Dashboard",
+    path: "/dashboard/employee-dashboard",
+    icon: <BiSolidDashboard />,
+    role: ["Admin", "Human Resource", "Staff", "Employee"],
   },
   {
     label: "Admin Panel",
@@ -40,7 +34,7 @@ export const menu = [
       },
       {
         label: "Departments",
-        path: "/dashboard/employees/leaves",
+        path: "/dashboard/employees/departments",
         icon: <GoDotFill className="text-xs" />,
       },
     ],
@@ -74,12 +68,14 @@ export const menu = [
   },
   {
     label: "Resignation",
+    path: "/dashboard/resignation",
     icon: <FaUser />,
-    role: ["Admin", "Human Resource", "Staff", "Employee"],
+    role: ["Admin", "Human Resource"],
   },
   {
     label: "Termination",
+    path: "/dashboard/termination",
     icon: <FaUser />,
-    role: ["Admin", "Human Resource", "Staff", "Employee"],
+    role: ["Admin", "Human Resource"],
   },
 ];

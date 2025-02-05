@@ -8,7 +8,7 @@ const Sidebar = () => {
       <div className="h-[10vh] flex items-center justify-center">
         <h1 className="text-background">Logo</h1>
       </div>
-      <div className="space-y-10 text-background my-4 px-6 py-8">
+      <div className="space-y-8 text-background my-2 px-6 py-4">
         <MenuChildren />
       </div>
     </section>

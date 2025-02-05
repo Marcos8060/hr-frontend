@@ -68,7 +68,7 @@ const MenuChildren = () => {
                         }`}
                       >
                         <p>{child.icon}</p>
-                        <p className="text-sm">{child.label}</p>
+                        <p className="text-xs font-bold">{child.label}</p>
                       </Link>
                     ))}
                   </section>
